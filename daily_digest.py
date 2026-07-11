@@ -65,8 +65,11 @@ def status_for(title: dict, today: date) -> str:
         if days > 0:
             return f"Premieres in {days} days"
         return "Season complete"
+    if days > 0 and not title["dateConfirmed"]:
+        return title["releaseWindow"]
     if days > 0:
-        return f"Opens in {days} day{'' if days == 1 else 's'}"
+        verb = "Premieres" if title["type"] == "TV" else "Opens"
+        return f"{verb} in {days} day{'' if days == 1 else 's'}"
     if days >= -45 and title["type"] == "Movie":
         return "In theaters"
     return "Released"

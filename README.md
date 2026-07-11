@@ -9,8 +9,8 @@ on top of the release calendar.
 
 | File | Purpose |
 |---|---|
-| `index.html` | The web app — five tabs: **This Month** (July 2026 spotlight), **Deep Dive** (highest-potential title), **12-Month Calendar** (releases + producers + rights holders, CSV export), **Ecommerce Rankings** (5-dimension scored board, CSV export), **Daily Email Feed** (live preview + setup) |
-| `data.js` | The dataset — every tracked title with release info, producers, consumer-product rights holder, keywords, and 1–10 scores. Edit this file to update the app; the dashboard, spreadsheets, and email all read from it. |
+| `index.html` | The web app — six tabs: **This Month** (July 2026 spotlight), **Deep Dive** (highest-potential title), **12-Month Calendar** (releases + producers + rights holders, CSV export), **Ecommerce Rankings** (5-dimension scored board, CSV export), **Relevance Signals** (modeled 12-month search-trend curve, momentum chip, passion gauge, and ideal-product pick per title), **Daily Email Feed** (live preview + setup) |
+| `data.js` | The dataset — every tracked title with release info, producers, consumer-product rights holder, keywords, 1–10 scores, a `baseInterest` year-round search baseline, and an `idealProduct` recommendation. Edit this file to update the app; the dashboard, spreadsheets, and email all read from it. |
 | `daily_digest.py` | Builds the daily brief from `data.js` and emails it to subscribers (`--preview` / `--send`) |
 | `newsletter.py` | Subscriber management (JSON-backed) and SMTP sending primitives |
 

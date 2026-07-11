@@ -189,6 +189,44 @@
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
 
+  /* Relevance signals */
+  .chip {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+    font: inherit; font-size: 12.5px; font-weight: 600; border-radius: 999px;
+    padding: 5px 14px; cursor: pointer;
+  }
+  .chip[aria-pressed="true"] { border-color: var(--seq-fill); color: var(--text-primary); background: var(--accent-wash); }
+  select.btn { padding: 5px 10px; }
+  .sig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 12px; }
+  .sig-card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 10px;
+  }
+  .sig-card .top { display: flex; align-items: baseline; gap: 8px; }
+  .sig-card .title { font-weight: 650; font-size: 14px; flex: 1; }
+  .mchip {
+    font-size: 11px; font-weight: 650; letter-spacing: 0.03em; white-space: nowrap;
+    border: 1px solid var(--baseline); color: var(--text-secondary);
+    border-radius: 999px; padding: 1px 9px;
+  }
+  .mchip.hot { border-color: var(--seq-fill); color: var(--text-primary); background: var(--accent-wash); }
+  .sig-row { display: grid; grid-template-columns: 1fr 96px; gap: 14px; align-items: end; }
+  .spark { display: block; width: 100%; height: 64px; }
+  .spark-cap, .gauge-cap { font-size: 11px; color: var(--text-muted); margin-top: 3px; display: flex; justify-content: space-between; }
+  .gauge { display: block; width: 96px; height: 64px; }
+  .gauge-cap { justify-content: center; }
+  .sig-kw { font-size: 12px; color: var(--text-secondary); }
+  .sig-kw b { font-weight: 650; color: var(--text-primary); }
+  .kwtag {
+    display: inline-block; font-size: 10.5px; font-weight: 650; letter-spacing: 0.04em;
+    border: 1px solid var(--baseline); color: var(--text-muted); border-radius: 4px;
+    padding: 0 5px; line-height: 15px; margin-left: 6px; vertical-align: 1px; text-transform: uppercase;
+  }
+  .product { background: var(--accent-wash); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; }
+  .product .plabel { font-size: 10.5px; font-weight: 650; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-muted); display: block; margin-bottom: 2px; }
+  .product b { font-weight: 650; }
+  .product .pwhy { color: var(--text-secondary); margin-top: 3px; }
+
   /* Digest */
   .digest { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
   .digest .dhead { padding: 14px 18px; border-bottom: 1px solid var(--grid); background: var(--accent-wash); }
@@ -235,6 +273,7 @@
     <button role="tab" aria-selected="false" data-tab="deepdive">Deep Dive</button>
     <button role="tab" aria-selected="false" data-tab="calendar">12-Month Calendar</button>
     <button role="tab" aria-selected="false" data-tab="rankings">Ecommerce Rankings</button>
+    <button role="tab" aria-selected="false" data-tab="signals">Relevance Signals</button>
     <button role="tab" aria-selected="false" data-tab="digest">Daily Email Feed</button>
   </nav>
 
@@ -347,6 +386,29 @@
     </div>
   </section>
 
+  <!-- ============ TAB: SIGNALS ============ -->
+  <section class="tab" id="tab-signals">
+    <div class="kicker">Relevance signals · keyword momentum, passion meters &amp; the ideal product per title</div>
+    <p class="lede" style="margin-bottom:14px">
+      Each title's 12-month search-interest curve, its fan-passion meter, and the single product
+      concept to chase first. Curves are <b>modeled</b> from release timing, fandom scale, and each
+      franchise's year-round search baseline — swap in live Google&nbsp;Trends or Amazon search-term
+      data as it becomes available. Hover a trend line for monthly values.
+    </p>
+    <div class="toolbar">
+      <button class="chip" data-f="All" aria-pressed="true">All</button>
+      <button class="chip" data-f="Movie" aria-pressed="false">Movies</button>
+      <button class="chip" data-f="TV" aria-pressed="false">TV</button>
+      <span class="hint" style="margin-left:8px">Sort by</span>
+      <select id="sig-sort" class="btn">
+        <option value="momentum" selected>Momentum</option>
+        <option value="passion">Passion</option>
+        <option value="composite">Composite</option>
+      </select>
+    </div>
+    <div class="sig-grid" id="sig-grid"></div>
+  </section>
+
   <!-- ============ TAB: DIGEST ============ -->
   <section class="tab" id="tab-digest">
     <div class="kicker">Daily trend brief · delivered to staff by email</div>
@@ -411,7 +473,8 @@ python3 daily_digest.py --send
       if (d > 0) return "Premieres in " + d + " days";
       return "Season complete";
     }
-    if (d > 0) return "Opens in " + d + " day" + (d === 1 ? "" : "s");
+    if (d > 0 && !t.dateConfirmed) return t.releaseWindow;
+    if (d > 0) return (t.type === "TV" ? "Premieres" : "Opens") + " in " + d + " day" + (d === 1 ? "" : "s");
     if (d >= -45 && t.type === "Movie") return "In theaters";
     return "Released";
   }
@@ -594,6 +657,112 @@ python3 daily_digest.py --send
   document.getElementById("rk-dims").innerHTML = DIM_KEYS.map(k =>
     "<tr><td class='titlecell' style='white-space:nowrap'>" + esc(DIM_LABELS[k]) + " (" + Math.round(W[k] * 100) + "%)</td><td>" + esc(D.dimensions[k]) + "</td></tr>").join("");
 
+  // ---------- relevance signals ----------
+  // Modeled search-interest curve: year-round baseline -> anticipation ramp -> release
+  // peak -> decay (slower for TV seasons than theatrical openings).
+  function trendSeries(t) {
+    const base = t.baseInterest || 10;
+    const peak = Math.min(100, base + 30 + t.scores.scale * 3);
+    const rel = parseDate(t.releaseDate);
+    const relYM = rel.getFullYear() * 12 + rel.getMonth();
+    const nowYM = TODAY.getFullYear() * 12 + TODAY.getMonth();
+    const pts = [], labels = [];
+    for (let i = 0; i < 12; i++) {
+      const ym = nowYM - 11 + i;
+      labels.push(new Date(Math.floor(ym / 12), ym % 12, 1)
+        .toLocaleDateString("en-US", { month: "short", year: "2-digit" }).replace(" ", " ’"));
+      const mtr = relYM - ym;
+      let v;
+      if (mtr > 0) v = base + (peak - base) * Math.exp(-mtr / 2.0);
+      else {
+        const post = t.type === "TV" ? Math.max(0, -mtr - 1) : -mtr;
+        v = base + (peak - base) * Math.pow(t.type === "TV" ? 0.65 : 0.5, post);
+      }
+      v += Math.sin((i + 1) * (t.id.length % 7 + 2)) * 2.5;
+      pts.push(Math.max(3, Math.min(100, Math.round(v))));
+    }
+    return { pts, labels, peak };
+  }
+  function momentumOf(t) {
+    const { pts, peak } = trendSeries(t);
+    const last = pts[11], rise = pts[11] - pts[8];
+    if (last >= peak * 0.85 && last >= 40) return "spiking";
+    if (rise > 6) return "rising";
+    if (rise < -6) return "fading";
+    if (last < 18) return "dormant";
+    return "steady";
+  }
+  const M_GLYPH = { spiking: "▲▲ Spiking", rising: "▲ Rising", steady: "→ Steady", fading: "▼ Fading", dormant: "· Dormant" };
+  const M_ORDER = { spiking: 0, rising: 1, steady: 2, fading: 3, dormant: 4 };
+
+  function sparkSVG(t) {
+    const { pts } = trendSeries(t);
+    const X = i => 5 + i * (250 / 11), Y = v => 55 - v * 0.48;
+    const line = pts.map((v, i) => (i ? "L" : "M") + X(i).toFixed(1) + " " + Y(v).toFixed(1)).join(" ");
+    const area = line + " L" + X(11).toFixed(1) + " 58 L5 58 Z";
+    return '<svg class="spark" viewBox="0 0 260 64" preserveAspectRatio="none" data-id="' + t.id + '">' +
+      '<line x1="5" y1="58" x2="255" y2="58" stroke="var(--baseline)" stroke-width="1"></line>' +
+      '<path d="' + area + '" fill="var(--seq-fill)" opacity="0.1"></path>' +
+      '<path d="' + line + '" fill="none" stroke="var(--seq-fill)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"></path>' +
+      '<circle cx="' + X(11).toFixed(1) + '" cy="' + Y(pts[11]).toFixed(1) + '" r="4" fill="var(--seq-fill)" stroke="var(--surface-1)" stroke-width="2"></circle>' +
+      "</svg>";
+  }
+  function gaugeSVG(t) {
+    const p = t.scores.passion, len = Math.PI * 34;
+    const arc = "M 11 54 A 34 34 0 0 1 79 54";
+    return '<svg class="gauge" viewBox="0 0 90 64">' +
+      '<path d="' + arc + '" fill="none" stroke="var(--seq-track)" stroke-width="9" stroke-linecap="round"></path>' +
+      '<path d="' + arc + '" fill="none" stroke="var(--seq-fill)" stroke-width="9" stroke-linecap="round" stroke-dasharray="' +
+      (len * p / 10).toFixed(1) + " " + (len * 1.2).toFixed(1) + '"></path>' +
+      '<text x="45" y="52" text-anchor="middle" font-size="19" font-weight="650" fill="var(--text-primary)">' + p + '</text>' +
+      "</svg>";
+  }
+
+  let sigFilter = "All";
+  function renderSignals() {
+    const sortBy = document.getElementById("sig-sort").value;
+    const rows = D.titles.filter(t => sigFilter === "All" || t.type === sigFilter).sort((a, b) => {
+      if (sortBy === "passion") return b.scores.passion - a.scores.passion || composite(b) - composite(a);
+      if (sortBy === "composite") return composite(b) - composite(a);
+      return M_ORDER[momentumOf(a)] - M_ORDER[momentumOf(b)] || composite(b) - composite(a);
+    });
+    document.getElementById("sig-grid").innerHTML = rows.map(t => {
+      const mom = momentumOf(t), { labels } = trendSeries(t);
+      const kwTag = t.scores.reachability >= 8 ? "ownable keywords" : t.scores.reachability >= 5 ? "moderate keywords" : "generic keywords";
+      return '<div class="sig-card">' +
+        '<div class="top"><span class="title">' + esc(t.title) + '</span>' +
+        '<span class="mchip' + (mom === "spiking" || mom === "rising" ? " hot" : "") + '">' + M_GLYPH[mom] + "</span></div>" +
+        '<div class="meta" style="font-size:12px;color:var(--text-secondary)"><span class="badge">' + esc(t.type) + "</span> &nbsp;" + esc(statusFor(t)) + " · composite " + composite(t).toFixed(1) + "</div>" +
+        '<div class="sig-row"><div>' + sparkSVG(t) +
+          '<div class="spark-cap"><span>' + esc(labels[0]) + '</span><span>search interest, modeled</span><span>' + esc(labels[11]) + "</span></div></div>" +
+        "<div>" + gaugeSVG(t) + '<div class="gauge-cap">passion / 10</div></div></div>' +
+        '<div class="sig-kw"><b>' + esc(t.keywords.slice(0, 3).join(" · ")) + "</b><span class='kwtag'>" + kwTag + "</span></div>" +
+        '<div class="product"><span class="plabel">Ideal product</span><b>' + esc(t.idealProduct.name) + "</b> · " + esc(t.idealProduct.category) +
+        '<div class="pwhy">' + esc(t.idealProduct.why) + "</div></div>" +
+        "</div>";
+    }).join("");
+    document.querySelectorAll("#sig-grid .spark").forEach(svg => {
+      const t = D.titles.find(x => x.id === svg.dataset.id);
+      const { pts, labels } = trendSeries(t);
+      svg.addEventListener("mousemove", ev => {
+        const r = svg.getBoundingClientRect();
+        const i = Math.max(0, Math.min(11, Math.round((ev.clientX - r.left) / r.width * 11)));
+        tip.innerHTML = '<div class="t">' + esc(t.title) + '</div><div class="r"><span>' + esc(labels[i]) + "</span><b>" + pts[i] + "/100</b></div>";
+        tip.style.display = "block";
+        tip.style.left = Math.min(ev.clientX + 14, innerWidth - 240) + "px";
+        tip.style.top = Math.min(ev.clientY + 14, innerHeight - 80) + "px";
+      });
+      svg.addEventListener("mouseleave", hideTip);
+    });
+  }
+  document.querySelectorAll(".chip").forEach(c => c.addEventListener("click", () => {
+    sigFilter = c.dataset.f;
+    document.querySelectorAll(".chip").forEach(x => x.setAttribute("aria-pressed", x === c ? "true" : "false"));
+    renderSignals();
+  }));
+  document.getElementById("sig-sort").addEventListener("change", renderSignals);
+  renderSignals();
+
   // ---------- CSV export ----------
   function downloadCSV(name, header, rows) {
     const q = v => '"' + String(v).replace(/"/g, '""') + '"';
@@ -608,8 +777,8 @@ python3 daily_digest.py --send
       byDate.map(t => [t.releaseWindow, t.releaseDate, t.dateConfirmed ? "Yes" : "Expected", t.title, t.type, t.platform, t.producers.join("; "), t.rightsHolder, t.franchise, t.genre, t.notes])));
   document.getElementById("export-rankings").addEventListener("click", () =>
     downloadCSV("ecommerce-relevancy-rankings.csv",
-      ["Rank", "Title", "Type", "Release", "Scale (30%)", "Reachability (25%)", "Merchability (20%)", "Passion (15%)", "Competition Whitespace (10%)", "Composite (0-100)", "Top Keywords", "Rights Holder"],
-      byComposite.map((t, i) => [i + 1, t.title, t.type, t.releaseWindow, t.scores.scale, t.scores.reachability, t.scores.merchability, t.scores.passion, t.scores.competition, composite(t).toFixed(1), t.keywords.join("; "), t.rightsHolder])));
+      ["Rank", "Title", "Type", "Release", "Scale (30%)", "Reachability (25%)", "Merchability (20%)", "Passion (15%)", "Competition Whitespace (10%)", "Composite (0-100)", "Top Keywords", "Ideal Product", "Rights Holder"],
+      byComposite.map((t, i) => [i + 1, t.title, t.type, t.releaseWindow, t.scores.scale, t.scores.reachability, t.scores.merchability, t.scores.passion, t.scores.competition, composite(t).toFixed(1), t.keywords.join("; "), t.idealProduct.name + " (" + t.idealProduct.category + ")", t.rightsHolder])));
 
   // ---------- daily digest preview ----------
   function buildDigest() {
