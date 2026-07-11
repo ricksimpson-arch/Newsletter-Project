@@ -1,0 +1,648 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entertainment Radar — Ecommerce BI</title>
+<style>
+  :root {
+    --surface-1: #fcfcfb;
+    --page: #f9f9f7;
+    --text-primary: #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted: #898781;
+    --grid: #e1e0d9;
+    --baseline: #c3c2b7;
+    --border: rgba(11,11,11,0.10);
+    --seq-fill: #2a78d6;      /* sequential blue 450 */
+    --seq-track: #cde2fb;     /* sequential blue 100 */
+    --seq-deep: #1c5cab;      /* sequential blue 550 */
+    --good-text: #006300;
+    --accent-wash: rgba(42,120,214,0.08);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --surface-1: #1a1a19;
+      --page: #0d0d0d;
+      --text-primary: #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted: #898781;
+      --grid: #2c2c2a;
+      --baseline: #383835;
+      --border: rgba(255,255,255,0.10);
+      --seq-fill: #3987e5;
+      --seq-track: #104281;
+      --seq-deep: #86b6ef;
+      --good-text: #0ca30c;
+      --accent-wash: rgba(57,135,229,0.12);
+    }
+  }
+  :root[data-theme="light"] {
+    --surface-1: #fcfcfb; --page: #f9f9f7; --text-primary: #0b0b0b;
+    --text-secondary: #52514e; --text-muted: #898781; --grid: #e1e0d9;
+    --baseline: #c3c2b7; --border: rgba(11,11,11,0.10);
+    --seq-fill: #2a78d6; --seq-track: #cde2fb; --seq-deep: #1c5cab;
+    --good-text: #006300; --accent-wash: rgba(42,120,214,0.08);
+  }
+  :root[data-theme="dark"] {
+    --surface-1: #1a1a19; --page: #0d0d0d; --text-primary: #ffffff;
+    --text-secondary: #c3c2b7; --text-muted: #898781; --grid: #2c2c2a;
+    --baseline: #383835; --border: rgba(255,255,255,0.10);
+    --seq-fill: #3987e5; --seq-track: #104281; --seq-deep: #86b6ef;
+    --good-text: #0ca30c; --accent-wash: rgba(57,135,229,0.12);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--page);
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 20px 20px 64px; }
+
+  header.app { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 8px 0 4px; }
+  header.app h1 { font-size: 20px; font-weight: 650; letter-spacing: -0.01em; }
+  header.app .sub { color: var(--text-secondary); font-size: 13px; }
+  header.app .spacer { flex: 1; }
+  .theme-btn {
+    border: 1px solid var(--border); background: var(--surface-1); color: var(--text-secondary);
+    border-radius: 999px; padding: 4px 12px; font-size: 12px; cursor: pointer;
+  }
+  .theme-btn:hover { color: var(--text-primary); }
+
+  nav.tabs { display: flex; gap: 4px; margin: 14px 0 20px; border-bottom: 1px solid var(--grid); flex-wrap: wrap; }
+  nav.tabs button {
+    appearance: none; border: none; background: none; cursor: pointer;
+    font: inherit; font-size: 13.5px; font-weight: 550; color: var(--text-secondary);
+    padding: 8px 14px 10px; border-bottom: 2px solid transparent; margin-bottom: -1px;
+  }
+  nav.tabs button:hover { color: var(--text-primary); }
+  nav.tabs button[aria-selected="true"] { color: var(--text-primary); border-bottom-color: var(--seq-fill); }
+
+  section.tab { display: none; }
+  section.tab.active { display: block; }
+
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border);
+    border-radius: 10px; padding: 18px 20px; margin-bottom: 16px;
+  }
+  h2 { font-size: 16px; font-weight: 650; margin-bottom: 4px; }
+  h3 { font-size: 13.5px; font-weight: 650; margin-bottom: 6px; }
+  .kicker { font-size: 11px; font-weight: 650; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 4px; }
+  p.lede { color: var(--text-secondary); font-size: 13.5px; max-width: 72ch; }
+
+  /* Stat tiles */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-bottom: 16px; }
+  .tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+  .tile .label { font-size: 12px; color: var(--text-secondary); }
+  .tile .value { font-size: 26px; font-weight: 600; margin-top: 2px; }
+  .tile .ctx { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  /* Spotlight cards */
+  .spot-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .spot {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 14px 16px; display: flex; flex-direction: column; gap: 8px;
+  }
+  .spot.lead { outline: 2px solid var(--seq-fill); outline-offset: -1px; }
+  .spot .top { display: flex; align-items: baseline; gap: 8px; }
+  .spot .title { font-weight: 650; font-size: 14px; flex: 1; }
+  .spot .score { font-weight: 650; font-size: 18px; font-variant-numeric: normal; }
+  .spot .meta { font-size: 12px; color: var(--text-secondary); }
+  .spot .note { font-size: 12.5px; color: var(--text-secondary); }
+  .badge {
+    display: inline-block; font-size: 10.5px; font-weight: 650; letter-spacing: 0.05em;
+    border: 1px solid var(--baseline); color: var(--text-secondary);
+    border-radius: 4px; padding: 0 6px; line-height: 16px; vertical-align: 1px;
+  }
+  .flag { font-size: 11px; color: var(--good-text); font-weight: 600; }
+
+  /* Meter (single-hue: fill + lighter track of same ramp) */
+  .meter { height: 8px; background: var(--seq-track); border-radius: 4px; position: relative; overflow: visible; }
+  .meter > i { position: absolute; left: 0; top: 0; bottom: 0; background: var(--seq-fill); border-radius: 4px 4px 4px 4px; display: block; }
+  .meter .avg { position: absolute; top: -3px; width: 0; height: 0; border-left: 4px solid transparent; border-right: 4px solid transparent; border-top: 6px solid var(--text-muted); transform: translateX(-4px); }
+
+  /* Bar chart */
+  .chart { margin-top: 10px; }
+  .chart .row { display: grid; grid-template-columns: 220px 1fr; align-items: center; gap: 10px; padding: 3px 0; }
+  .chart .name { font-size: 12.5px; color: var(--text-secondary); text-align: right; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .chart .track { position: relative; height: 22px; display: flex; align-items: center; border-left: 1px solid var(--baseline); }
+  .chart .bar {
+    height: 18px; background: var(--seq-fill); border-radius: 0 4px 4px 0;
+    min-width: 2px; cursor: default;
+  }
+  .chart .row:hover .bar { background: var(--seq-deep); }
+  .chart .val { font-size: 12px; color: var(--text-secondary); margin-left: 8px; font-weight: 600; }
+  .chart .axis-note { font-size: 11.5px; color: var(--text-muted); margin-top: 8px; }
+
+  /* Tables */
+  .table-scroll { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13px; }
+  thead th {
+    text-align: left; font-size: 11.5px; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--text-muted); font-weight: 650; padding: 8px 10px; border-bottom: 1px solid var(--baseline);
+    white-space: nowrap;
+  }
+  thead th.sortable { cursor: pointer; user-select: none; }
+  thead th.sortable:hover { color: var(--text-primary); }
+  thead th .arrow { font-size: 10px; }
+  tbody td { padding: 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  tbody tr:hover { background: var(--accent-wash); }
+  td.num { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  td.rel { min-width: 120px; font-variant-numeric: tabular-nums; }
+  td.notes { min-width: 260px; }
+  td .cellmeter { display: inline-block; width: 34px; vertical-align: middle; margin-right: 6px; }
+  .titlecell { font-weight: 600; min-width: 170px; }
+  .subcell { color: var(--text-muted); font-size: 12px; }
+
+  .btn {
+    display: inline-block; border: 1px solid var(--border); background: var(--surface-1);
+    color: var(--text-primary); font: inherit; font-size: 12.5px; font-weight: 600;
+    border-radius: 6px; padding: 6px 12px; cursor: pointer;
+  }
+  .btn:hover { border-color: var(--seq-fill); }
+  .toolbar { display: flex; gap: 8px; align-items: center; margin: 10px 0 14px; flex-wrap: wrap; }
+  .toolbar .hint { font-size: 12px; color: var(--text-muted); }
+
+  /* Deep dive */
+  .hero { display: flex; gap: 24px; align-items: flex-start; flex-wrap: wrap; }
+  .hero .big { font-size: 52px; font-weight: 650; line-height: 1.05; }
+  .hero .big small { display: block; font-size: 12px; font-weight: 550; color: var(--text-muted); letter-spacing: 0.05em; text-transform: uppercase; margin-top: 4px; }
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px 24px; margin-top: 14px; }
+  .facts div { font-size: 13px; }
+  .facts .k { color: var(--text-muted); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 650; }
+  .dims { margin-top: 8px; }
+  .dims .drow { display: grid; grid-template-columns: 150px 1fr 44px; gap: 12px; align-items: center; padding: 7px 0; }
+  .dims .dname { font-size: 13px; color: var(--text-secondary); }
+  .dims .dval { font-size: 13px; font-weight: 650; text-align: right; font-variant-numeric: tabular-nums; }
+  .legend-note { font-size: 11.5px; color: var(--text-muted); margin-top: 8px; }
+  ul.plays { margin: 8px 0 0 18px; font-size: 13.5px; }
+  ul.plays li { margin-bottom: 8px; }
+  ul.plays li b { font-weight: 650; }
+  .warn {
+    border-left: 3px solid var(--baseline); padding: 8px 14px; margin-top: 14px;
+    color: var(--text-secondary); font-size: 13px; background: var(--accent-wash); border-radius: 0 8px 8px 0;
+  }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 760px) { .grid2 { grid-template-columns: 1fr; } }
+
+  /* Digest */
+  .digest { border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+  .digest .dhead { padding: 14px 18px; border-bottom: 1px solid var(--grid); background: var(--accent-wash); }
+  .digest .dhead .subj { font-weight: 650; font-size: 14px; }
+  .digest .dhead .from { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+  .digest .dbody { padding: 8px 18px 16px; }
+  .digest h4 { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--text-muted); margin: 14px 0 6px; }
+  .digest .item { padding: 7px 0; border-bottom: 1px solid var(--grid); font-size: 13.5px; }
+  .digest .item:last-child { border-bottom: none; }
+  .digest .item .when { color: var(--text-muted); font-size: 12px; }
+  pre.code {
+    background: var(--accent-wash); border: 1px solid var(--grid); border-radius: 8px;
+    padding: 12px 14px; font-size: 12.5px; overflow-x: auto; line-height: 1.55;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  .steps { font-size: 13.5px; margin: 8px 0 0 18px; }
+  .steps li { margin-bottom: 6px; }
+
+  /* Tooltip */
+  #tip {
+    position: fixed; z-index: 50; pointer-events: none; display: none;
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18); padding: 10px 12px; font-size: 12.5px; max-width: 280px;
+  }
+  #tip .t { font-weight: 650; margin-bottom: 4px; }
+  #tip .r { display: flex; justify-content: space-between; gap: 16px; color: var(--text-secondary); }
+  #tip .r b { color: var(--text-primary); font-variant-numeric: tabular-nums; }
+
+  footer.app { margin-top: 28px; font-size: 12px; color: var(--text-muted); max-width: 80ch; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="app">
+    <h1>Entertainment Radar</h1>
+    <span class="sub" id="header-sub"></span>
+    <span class="spacer"></span>
+    <button class="theme-btn" id="theme-toggle" type="button">Theme</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" aria-selected="true"  data-tab="overview">This Month</button>
+    <button role="tab" aria-selected="false" data-tab="deepdive">Deep Dive</button>
+    <button role="tab" aria-selected="false" data-tab="calendar">12-Month Calendar</button>
+    <button role="tab" aria-selected="false" data-tab="rankings">Ecommerce Rankings</button>
+    <button role="tab" aria-selected="false" data-tab="digest">Daily Email Feed</button>
+  </nav>
+
+  <!-- ============ TAB: THIS MONTH ============ -->
+  <section class="tab active" id="tab-overview">
+    <div class="kicker">July 2026 · content with the highest ecommerce conversion potential</div>
+    <p class="lede" style="margin-bottom:16px">
+      Titles releasing or airing this month, scored on the five ecommerce dimensions
+      (scale, reachability, merchability, passion, competition whitespace) and ranked by
+      weighted composite. The outlined card is this month's top opportunity — see the Deep Dive tab.
+    </p>
+    <div class="tiles" id="ov-tiles"></div>
+    <div class="spot-grid" id="ov-spots"></div>
+
+    <div class="card" style="margin-top:16px">
+      <h2>12-month opportunity board — top 10 by composite</h2>
+      <p class="lede">The full board with methodology is on the Ecommerce Rankings tab. Hover a bar for the dimension breakdown.</p>
+      <div class="chart" id="ov-chart"></div>
+      <div class="axis-note" style="font-size:11.5px;color:var(--text-muted);margin-top:8px">
+        Composite score, 0–100 · weighted: scale 30% · reachability 25% · merchability 20% · passion 15% · competition whitespace 10%
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: DEEP DIVE ============ -->
+  <section class="tab" id="tab-deepdive">
+    <div class="kicker">Deep dive · highest-potential title releasing this month</div>
+    <div class="card">
+      <div class="hero">
+        <div style="flex:1;min-width:260px">
+          <h2 style="font-size:22px" id="dd-title"></h2>
+          <p class="lede" id="dd-lede"></p>
+          <div class="facts" id="dd-facts"></div>
+        </div>
+        <div class="big" id="dd-score"></div>
+      </div>
+    </div>
+
+    <div class="grid2">
+      <div class="card">
+        <h3>Dimension scores vs. slate average</h3>
+        <div class="dims" id="dd-dims"></div>
+        <div class="legend-note">▲ marks the average across all tracked titles. Whitespace 2/10 is the one weak dimension — see the caution below.</div>
+      </div>
+      <div class="card">
+        <h3>Keyword &amp; search strategy</h3>
+        <div class="table-scroll">
+        <table>
+          <thead><tr><th>Keyword cluster</th><th>Why it matters</th></tr></thead>
+          <tbody id="dd-keywords"></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>How an ecommerce team plays it</h3>
+      <ul class="plays" id="dd-plays"></ul>
+      <div class="warn" id="dd-warn"></div>
+    </div>
+
+    <div class="card">
+      <h3>Runner-up: the whitespace play</h3>
+      <p class="lede" id="dd-runnerup"></p>
+    </div>
+  </section>
+
+  <!-- ============ TAB: CALENDAR ============ -->
+  <section class="tab" id="tab-calendar">
+    <div class="kicker">Upcoming releases · July 2026 – June 2027</div>
+    <p class="lede">
+      Every tracked movie and TV premiere in the next 12 months, with the producers and the
+      organization that controls consumer-product (merchandising) rights. Unconfirmed dates
+      are marked "expected".
+    </p>
+    <div class="toolbar">
+      <button class="btn" id="export-calendar">Download spreadsheet (CSV)</button>
+      <span class="hint">Opens directly in Excel or Google Sheets</span>
+    </div>
+    <div class="card table-scroll">
+      <table id="calendar-table">
+        <thead><tr>
+          <th>Release</th><th>Title</th><th>Type</th><th>Platform / distributor</th>
+          <th>Producers</th><th>Consumer-product rights holder</th><th>Franchise / notes</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============ TAB: RANKINGS ============ -->
+  <section class="tab" id="tab-rankings">
+    <div class="kicker">Ecommerce relevancy rankings · July 2026 – June 2027</div>
+    <p class="lede" id="rk-method"></p>
+    <div class="toolbar">
+      <button class="btn" id="export-rankings">Download spreadsheet (CSV)</button>
+      <span class="hint">Click any column header to re-sort</span>
+    </div>
+    <div class="card table-scroll">
+      <table id="rankings-table">
+        <thead></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Dimension definitions</h3>
+      <div class="table-scroll">
+      <table><tbody id="rk-dims"></tbody></table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TAB: DIGEST ============ -->
+  <section class="tab" id="tab-digest">
+    <div class="kicker">Daily trend brief · delivered to staff by email</div>
+    <p class="lede" style="margin-bottom:14px">
+      A daily email keeps the ecommerce team on top of release countdowns, on-air episode
+      schedules, and the opportunity board. Below is today's issue, generated live from the
+      same dataset that powers this dashboard.
+    </p>
+    <div class="digest card" style="padding:0" id="digest-preview"></div>
+
+    <div class="card">
+      <h3>How delivery works</h3>
+      <ol class="steps">
+        <li>Staff are subscribed with <code>newsletter.py</code> (stored in <code>subscribers.json</code>).</li>
+        <li><code>daily_digest.py</code> builds this same brief from <code>data.js</code> and emails it via your SMTP server.</li>
+        <li>A cron job (or Task Scheduler on Windows) sends it every morning.</li>
+      </ol>
+      <pre class="code"># preview today's issue in the terminal (no email sent)
+python3 daily_digest.py --preview
+
+# subscribe staff members
+python3 -c "from newsletter import Newsletter; Newsletter('Entertainment Radar').subscribe('teammate@yourcompany.com', name='Sam')"
+
+# send for real (set SMTP_* environment variables first)
+export SMTP_HOST=smtp.yourcompany.com SMTP_PORT=587
+export SMTP_USER=radar@yourcompany.com SMTP_PASS=•••••••• DIGEST_FROM=radar@yourcompany.com
+python3 daily_digest.py --send
+
+# every weekday at 7:00 AM (crontab -e)
+0 7 * * 1-5 cd /path/to/Newsletter-Project && python3 daily_digest.py --send</pre>
+    </div>
+  </section>
+
+  <footer class="app" id="app-footer"></footer>
+</div>
+
+<div id="tip"></div>
+
+<script src="data.js"></script>
+<script>
+(function () {
+  "use strict";
+  const D = ENTERTAINMENT_DATA;
+  const W = D.weights;
+  const TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
+  const DIM_KEYS = ["scale", "reachability", "merchability", "passion", "competition"];
+  const DIM_LABELS = { scale: "Scale", reachability: "Reachability", merchability: "Merchability", passion: "Passion", competition: "Competition (whitespace)" };
+
+  // ---------- helpers ----------
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const composite = t => Math.round(DIM_KEYS.reduce((a, k) => a + t.scores[k] * W[k], 0) * 100) / 10;
+  const parseDate = s => { const [y, m, d] = s.split("-").map(Number); return new Date(y, m - 1, d); };
+  const daysUntil = t => t.releaseDate ? Math.round((parseDate(t.releaseDate) - TODAY) / 86400000) : null;
+  const fmtDate = s => parseDate(s).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+  function statusFor(t) {
+    const d = daysUntil(t);
+    if (d === null) return t.releaseWindow;
+    if (t.episodes) {
+      const end = parseDate(t.episodes.start); end.setDate(end.getDate() + (t.episodes.count - 1) * t.episodes.cadenceDays);
+      if (TODAY >= parseDate(t.episodes.start) && TODAY <= end) return "Airing now";
+      if (d > 0) return "Premieres in " + d + " days";
+      return "Season complete";
+    }
+    if (d > 0) return "Opens in " + d + " day" + (d === 1 ? "" : "s");
+    if (d >= -45 && t.type === "Movie") return "In theaters";
+    return "Released";
+  }
+
+  const byComposite = [...D.titles].sort((a, b) => composite(b) - composite(a));
+  const spotlight = D.titles.filter(t => t.monthSpotlight).sort((a, b) => composite(b) - composite(a));
+  const lead = spotlight[0];
+  const slateAvg = {};
+  DIM_KEYS.forEach(k => slateAvg[k] = D.titles.reduce((a, t) => a + t.scores[k], 0) / D.titles.length);
+
+  document.getElementById("header-sub").textContent =
+    "Movie & TV merchandising intelligence · " + D.meta.windowLabel + " · data as of " + fmtDate(D.meta.generated);
+  document.getElementById("app-footer").textContent = D.meta.disclaimer;
+
+  // ---------- tabs ----------
+  const tabs = document.querySelectorAll("nav.tabs button");
+  tabs.forEach(b => b.addEventListener("click", () => {
+    tabs.forEach(x => x.setAttribute("aria-selected", x === b ? "true" : "false"));
+    document.querySelectorAll("section.tab").forEach(s => s.classList.remove("active"));
+    document.getElementById("tab-" + b.dataset.tab).classList.add("active");
+  }));
+
+  // ---------- theme ----------
+  const root = document.documentElement;
+  const saved = localStorage.getItem("radar-theme");
+  if (saved) root.dataset.theme = saved;
+  document.getElementById("theme-toggle").addEventListener("click", () => {
+    const dark = root.dataset.theme ? root.dataset.theme === "dark"
+      : matchMedia("(prefers-color-scheme: dark)").matches;
+    root.dataset.theme = dark ? "light" : "dark";
+    localStorage.setItem("radar-theme", root.dataset.theme);
+  });
+
+  // ---------- tooltip ----------
+  const tip = document.getElementById("tip");
+  function showTip(ev, t) {
+    tip.innerHTML = '<div class="t">' + esc(t.title) + "</div>" +
+      DIM_KEYS.map(k => '<div class="r"><span>' + esc(DIM_LABELS[k]) + "</span><b>" + t.scores[k] + "/10</b></div>").join("") +
+      '<div class="r" style="margin-top:4px"><span>Composite</span><b>' + composite(t).toFixed(1) + "</b></div>";
+    tip.style.display = "block";
+    const x = Math.min(ev.clientX + 14, innerWidth - 300), y = Math.min(ev.clientY + 14, innerHeight - 190);
+    tip.style.left = x + "px"; tip.style.top = y + "px";
+  }
+  const hideTip = () => tip.style.display = "none";
+
+  // ---------- overview ----------
+  const openingSoon = D.titles.filter(t => { const d = daysUntil(t); return d !== null && d > 0 && d <= 30 && t.dateConfirmed; }).length;
+  const whitespace = D.titles.filter(t => t.scores.competition >= 7).length;
+  document.getElementById("ov-tiles").innerHTML = [
+    ["Titles tracked", D.titles.length, D.meta.windowLabel],
+    ["Active this month", spotlight.length, "releasing or airing in July"],
+    ["Top July composite", composite(lead).toFixed(1), lead.title],
+    ["Whitespace plays", whitespace, "competition score ≥ 7 of 10"]
+  ].map(([l, v, c]) => '<div class="tile"><div class="label">' + esc(l) + '</div><div class="value">' + esc(v) + '</div><div class="ctx">' + esc(c) + "</div></div>").join("");
+
+  document.getElementById("ov-spots").innerHTML = spotlight.map((t, i) => {
+    const c = composite(t);
+    return '<div class="spot' + (i === 0 ? " lead" : "") + '">' +
+      '<div class="top"><span class="title">' + esc(t.title) + '</span><span class="score">' + c.toFixed(1) + "</span></div>" +
+      '<div class="meta"><span class="badge">' + esc(t.type) + "</span> &nbsp;" + esc(statusFor(t)) + " · " + esc(t.platform) + "</div>" +
+      '<div class="meter"><i style="width:' + c + '%"></i></div>' +
+      '<div class="note">' + esc(t.notes) + "</div>" +
+      (i === 0 ? '<div class="flag">★ This month’s top opportunity — full analysis on the Deep Dive tab</div>' : "") +
+      "</div>";
+  }).join("");
+
+  const chart = document.getElementById("ov-chart");
+  const max = composite(byComposite[0]);
+  chart.innerHTML = byComposite.slice(0, 10).map(t =>
+    '<div class="row" data-id="' + t.id + '">' +
+      '<div class="name">' + esc(t.title) + "</div>" +
+      '<div class="track"><div class="bar" style="width:' + (composite(t) / max * 82) + '%"></div>' +
+      '<span class="val">' + composite(t).toFixed(1) + "</span></div></div>").join("");
+  chart.querySelectorAll(".row").forEach(row => {
+    const t = D.titles.find(x => x.id === row.dataset.id);
+    row.addEventListener("mousemove", ev => showTip(ev, t));
+    row.addEventListener("mouseleave", hideTip);
+  });
+
+  // ---------- deep dive (top spotlight title) ----------
+  const dd = lead;
+  const editorial = {
+    "spiderman-brand-new-day": {
+      lede: "Tom Holland's fourth solo outing opens July 31 — the biggest commercial event of the month and the #2 composite of the entire 12-month board. One nuance every ecommerce operator must know: although Sony makes the films, Spider-Man merchandising rights belong to Marvel/Disney, so all licensing runs through Disney Consumer Products.",
+      keywords: [
+        ["“Spider-Man Brand New Day”", "The film's official subtitle — low competition today, will spike hard toward July 31. Capture it in listings early."],
+        ["Suit & mask variants", "Every new film introduces a new suit design; new-suit product historically sells out first."],
+        ["“Spidey”, “web slinger”", "High-volume evergreen terms fans actually type; less brand-gated than the trademark itself."],
+        ["Character pairings", "Reported co-stars drive search bursts on announcement days — watch trailer-drop keyword trends."]
+      ],
+      plays: [
+        "<b>Licensed resale:</b> stock official product from Marvel licensees (Funko, Hasbro, Jazwares, LEGO) timed to the July 31 spike; event films reliably lift the whole licensed catalog 4–8 weeks around release.",
+        "<b>Adjacent, non-infringing trends:</b> comic-pop art styles, NYC skyline motifs, and spider-web graphic apparel surge alongside the film without touching gated trademarks.",
+        "<b>Back-to-school timing:</b> the release lands exactly at back-to-school buying; superhero backpacks, lunchboxes, and accessories are the proven conversion categories.",
+        "<b>Keyword capture:</b> build listings and ad groups on the film-specific subtitle now, before CPCs rise with the marketing blitz."
+      ],
+      warn: "Whitespace is the one weak dimension (2/10): Spider-Man is the most heavily licensed character in the business, the brand is gated on Amazon Brand Registry, and Disney enforces aggressively. Do not list unlicensed branded product — the play is licensed resale plus adjacent trends, executed fast.",
+      runnerup: "House of the Dragon — Season 3 (composite 77.0) is mid-season right now with weekly episodes through Aug 9 and roughly half the shelf saturation. Team Black / Team Green allegiance product, house-sigil apparel, and dragon-egg collectibles map to WBD's licensing program, while medieval-fantasy adjacent product (dragon jewelry, banner flags) converts without trademark exposure. If your team can only chase one whitespace play this month, this is it."
+    }
+  };
+  const ed = editorial[dd.id] || { lede: dd.notes, keywords: dd.keywords.map(k => [k, ""]), plays: [], warn: "", runnerup: "" };
+
+  document.getElementById("dd-title").textContent = dd.title;
+  document.getElementById("dd-lede").textContent = ed.lede;
+  document.getElementById("dd-score").innerHTML = composite(dd).toFixed(1) + "<small>composite · rank " +
+    (byComposite.indexOf(dd) + 1) + " of " + D.titles.length + " overall · #1 in July</small>";
+  document.getElementById("dd-facts").innerHTML = [
+    ["Release", dd.releaseWindow + (daysUntil(dd) > 0 ? " · in " + daysUntil(dd) + " days" : "")],
+    ["Platform", dd.platform],
+    ["Producers", dd.producers.join(", ")],
+    ["Consumer-product rights", dd.rightsHolder],
+    ["Franchise", dd.franchise],
+    ["Est. US fandom", "60M+ consumers (analyst estimate — Spider-Man is the top-selling superhero merch property)"]
+  ].map(([k, v]) => "<div><div class='k'>" + esc(k) + "</div>" + esc(v) + "</div>").join("");
+
+  document.getElementById("dd-dims").innerHTML = DIM_KEYS.map(k =>
+    '<div class="drow"><div class="dname">' + esc(DIM_LABELS[k]) + "</div>" +
+    '<div class="meter"><i style="width:' + dd.scores[k] * 10 + '%"></i><span class="avg" style="left:' + slateAvg[k] * 10 + '%"></span></div>' +
+    '<div class="dval">' + dd.scores[k] + "/10</div></div>").join("");
+
+  document.getElementById("dd-keywords").innerHTML = ed.keywords.map(([k, v]) =>
+    "<tr><td class='titlecell'>" + esc(k) + "</td><td>" + esc(v) + "</td></tr>").join("");
+  document.getElementById("dd-plays").innerHTML = ed.plays.map(p => "<li>" + p + "</li>").join("");
+  document.getElementById("dd-warn").innerHTML = "<b>Caution — saturation:</b> " + esc(ed.warn);
+  document.getElementById("dd-runnerup").textContent = ed.runnerup;
+
+  // ---------- calendar ----------
+  const byDate = [...D.titles].sort((a, b) => a.releaseDate.localeCompare(b.releaseDate));
+  document.querySelector("#calendar-table tbody").innerHTML = byDate.map(t =>
+    "<tr><td class='rel'>" + esc(t.releaseWindow) + "</td>" +
+    "<td class='titlecell'>" + esc(t.title) + "<div class='subcell'>" + esc(t.genre) + "</div></td>" +
+    "<td><span class='badge'>" + esc(t.type) + "</span></td>" +
+    "<td style='min-width:130px'>" + esc(t.platform) + "</td>" +
+    "<td style='min-width:140px'>" + esc(t.producers.join(", ")) + "</td>" +
+    "<td style='min-width:170px'>" + esc(t.rightsHolder) + "</td>" +
+    "<td class='subcell notes'>" + esc(t.franchise) + " — " + esc(t.notes) + "</td></tr>").join("");
+
+  // ---------- rankings ----------
+  document.getElementById("rk-method").textContent =
+    "Every tracked title scored 1–10 on the five dimensions, weighted into a 0–100 composite: " +
+    "scale 30% · reachability 25% · merchability 20% · passion 15% · competition whitespace 10%. " +
+    "For competition, higher = more whitespace (less existing product), so under-served surprise hits rank up.";
+
+  const RK_COLS = [
+    ["rank", "#"], ["title", "Title"], ["type", "Type"], ["release", "Release"],
+    ["scale", "Scale"], ["reachability", "Reach"], ["merchability", "Merch"],
+    ["passion", "Passion"], ["competition", "Whitespace"], ["composite", "Composite"]
+  ];
+  let sortKey = "composite", sortDir = -1;
+
+  function renderRankings() {
+    const rows = [...D.titles].sort((a, b) => {
+      let va, vb;
+      if (sortKey === "composite") { va = composite(a); vb = composite(b); }
+      else if (sortKey === "title" || sortKey === "type") { va = a[sortKey]; vb = b[sortKey]; }
+      else if (sortKey === "release" || sortKey === "rank") { va = a.releaseDate; vb = b.releaseDate; }
+      else { va = a.scores[sortKey]; vb = b.scores[sortKey]; }
+      return (va < vb ? -1 : va > vb ? 1 : 0) * sortDir;
+    });
+    document.querySelector("#rankings-table thead").innerHTML = "<tr>" + RK_COLS.map(([k, l]) =>
+      '<th class="sortable" data-k="' + k + '">' + esc(l) +
+      (k === sortKey ? ' <span class="arrow">' + (sortDir === 1 ? "▲" : "▼") + "</span>" : "") + "</th>").join("") + "</tr>";
+    const rankOf = t => byComposite.indexOf(t) + 1;
+    document.querySelector("#rankings-table tbody").innerHTML = rows.map(t =>
+      "<tr><td class='num'>" + rankOf(t) + "</td>" +
+      "<td class='titlecell'>" + esc(t.title) + "<div class='subcell'>" + esc(t.keywords.slice(0, 3).join(" · ")) + "</div></td>" +
+      "<td><span class='badge'>" + esc(t.type) + "</span></td>" +
+      "<td class='rel'>" + esc(t.releaseWindow) + "</td>" +
+      DIM_KEYS.map(k => "<td class='num'><span class='cellmeter meter'><i style='width:" + t.scores[k] * 10 + "%'></i></span>" + t.scores[k] + "</td>").join("") +
+      "<td class='num'><b>" + composite(t).toFixed(1) + "</b></td></tr>").join("");
+    document.querySelectorAll("#rankings-table th.sortable").forEach(th =>
+      th.addEventListener("click", () => {
+        const k = th.dataset.k;
+        if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = k === "title" || k === "type" || k === "release" || k === "rank" ? 1 : -1; }
+        renderRankings();
+      }));
+  }
+  renderRankings();
+
+  document.getElementById("rk-dims").innerHTML = DIM_KEYS.map(k =>
+    "<tr><td class='titlecell' style='white-space:nowrap'>" + esc(DIM_LABELS[k]) + " (" + Math.round(W[k] * 100) + "%)</td><td>" + esc(D.dimensions[k]) + "</td></tr>").join("");
+
+  // ---------- CSV export ----------
+  function downloadCSV(name, header, rows) {
+    const q = v => '"' + String(v).replace(/"/g, '""') + '"';
+    const csv = [header, ...rows].map(r => r.map(q).join(",")).join("\r\n");
+    const a = document.createElement("a");
+    a.href = URL.createObjectURL(new Blob(["﻿" + csv], { type: "text/csv;charset=utf-8" }));
+    a.download = name; a.click(); URL.revokeObjectURL(a.href);
+  }
+  document.getElementById("export-calendar").addEventListener("click", () =>
+    downloadCSV("upcoming-releases-jul2026-jun2027.csv",
+      ["Release", "Date (sortable)", "Confirmed", "Title", "Type", "Platform/Distributor", "Producers", "Consumer-Product Rights Holder", "Franchise", "Genre", "Notes"],
+      byDate.map(t => [t.releaseWindow, t.releaseDate, t.dateConfirmed ? "Yes" : "Expected", t.title, t.type, t.platform, t.producers.join("; "), t.rightsHolder, t.franchise, t.genre, t.notes])));
+  document.getElementById("export-rankings").addEventListener("click", () =>
+    downloadCSV("ecommerce-relevancy-rankings.csv",
+      ["Rank", "Title", "Type", "Release", "Scale (30%)", "Reachability (25%)", "Merchability (20%)", "Passion (15%)", "Competition Whitespace (10%)", "Composite (0-100)", "Top Keywords", "Rights Holder"],
+      byComposite.map((t, i) => [i + 1, t.title, t.type, t.releaseWindow, t.scores.scale, t.scores.reachability, t.scores.merchability, t.scores.passion, t.scores.competition, composite(t).toFixed(1), t.keywords.join("; "), t.rightsHolder])));
+
+  // ---------- daily digest preview ----------
+  function buildDigest() {
+    const sections = [];
+    const active = D.titles.filter(t => statusFor(t) === "In theaters" || statusFor(t) === "Airing now");
+    const soon = D.titles.filter(t => { const d = daysUntil(t); return d > 0 && d <= 30; }).sort((a, b) => daysUntil(a) - daysUntil(b));
+    const horizon = D.titles.filter(t => { const d = daysUntil(t); return d > 30 && d <= 120; }).sort((a, b) => daysUntil(a) - daysUntil(b));
+
+    sections.push(["Live now — demand is spiking", active.map(t => {
+      let extra = "";
+      if (t.episodes) {
+        const epNum = Math.floor((TODAY - parseDate(t.episodes.start)) / (86400000 * t.episodes.cadenceDays)) + 2;
+        if (epNum >= 2 && epNum <= t.episodes.count) extra = " Episode " + epNum + " of " + t.episodes.count + " airs " + t.episodes.night + ".";
+      }
+      return [t.title + " (" + t.type + ", " + t.platform + ") — " + statusFor(t) + "." + extra, t.notes];
+    })]);
+    sections.push(["Opening within 30 days — launch window", soon.map(t =>
+      [t.title + " — " + statusFor(t) + " (" + t.releaseWindow + ").", "Composite " + composite(t).toFixed(1) + ". " + t.notes])]);
+    sections.push(["90-day horizon — prep inventory now", horizon.map(t =>
+      [t.title + " — " + t.releaseWindow + ".", "Composite " + composite(t).toFixed(1) + ". Rights: " + t.rightsHolder])]);
+    sections.push(["Opportunity board — top 5 composite", byComposite.slice(0, 5).map((t, i) =>
+      ["#" + (i + 1) + "  " + t.title + " — " + composite(t).toFixed(1), t.releaseWindow])]);
+    return sections;
+  }
+  const dateStr = TODAY.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric", year: "numeric" });
+  document.getElementById("digest-preview").innerHTML =
+    '<div class="dhead"><div class="subj">Entertainment Radar — Daily Brief · ' + esc(dateStr) + "</div>" +
+    '<div class="from">From: radar@yourcompany.com · To: ecommerce team subscribers · sent by daily_digest.py</div></div>' +
+    '<div class="dbody">' + buildDigest().map(([h, items]) =>
+      "<h4>" + esc(h) + "</h4>" + (items.length ? items.map(([a, b]) =>
+        '<div class="item">' + esc(a) + ' <span class="when">' + esc(b) + "</span></div>").join("") :
+        '<div class="item when">Nothing in this window today.</div>')).join("") + "</div>";
+})();
+</script>
+</body>
+</html>
