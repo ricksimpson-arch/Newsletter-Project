@@ -13,6 +13,15 @@ on top of the release calendar.
 | `data.js` | The dataset — every tracked title with release info, producers, consumer-product rights holder, keywords, 1–10 scores, a `baseInterest` year-round search baseline, and an `idealProduct` recommendation. Edit this file to update the app; the dashboard, spreadsheets, and email all read from it. |
 | `daily_digest.py` | Builds the daily brief from `data.js` and emails it to subscribers (`--preview` / `--send`) |
 | `newsletter.py` | Subscriber management (JSON-backed) and SMTP sending primitives |
+| `build_artifact.py` | Writes `dist/`: a single-file standalone copy of the site (email-able, double-click to open) and an artifact-ready copy for claude.ai publishing |
+
+## Weekly refresh
+
+The dataset is refreshed weekly by a scheduled Claude routine: each Monday it
+checks release schedules and trend news, updates `data.js` (and the Deep Dive
+if the top title changes), verifies the build, pushes to this branch, and
+republishes the hosted launcher page at the same URL. `meta.generated` in
+`data.js` always shows the date of the last refresh.
 
 ## Launching the website
 

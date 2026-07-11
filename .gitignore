@@ -6,3 +6,6 @@ venv/
 
 # Runtime data
 subscribers.json
+
+# Generated builds
+dist/
