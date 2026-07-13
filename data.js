@@ -2,9 +2,9 @@ const ENTERTAINMENT_DATA =
 {
   "meta": {
     "appName": "Entertainment Radar",
-    "generated": "2026-07-11",
+    "generated": "2026-07-13",
     "windowLabel": "July 2026 – June 2027",
-    "disclaimer": "Scores are analyst estimates for ecommerce planning, compiled 2026-07-11 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
+    "disclaimer": "Scores are analyst estimates for ecommerce planning, last refreshed 2026-07-13 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
   },
   "weights": {
     "scale": 0.3,
@@ -21,6 +21,42 @@ const ENTERTAINMENT_DATA =
     "competition": "Market whitespace. 10 = wide-open, few products or licensees; 1 = saturated shelf. Surprise hits with low competition are the biggest opportunities."
   },
   "titles": [
+    {
+      "id": "toy-story-5",
+      "title": "Toy Story 5",
+      "type": "Movie",
+      "releaseDate": "2026-06-19",
+      "releaseWindow": "In theaters (opened June 19, 2026)",
+      "dateConfirmed": true,
+      "platform": "Theatrical (Disney / Pixar)",
+      "producers": [
+        "Pixar Animation Studios"
+      ],
+      "rightsHolder": "Disney Consumer Products",
+      "franchise": "Toy Story",
+      "genre": "Animated adventure",
+      "keywords": [
+        "Toy Story 5",
+        "Woody",
+        "Buzz Lightyear",
+        "Jessie"
+      ],
+      "scores": {
+        "scale": 9,
+        "reachability": 7,
+        "merchability": 9,
+        "passion": 8,
+        "competition": 2
+      },
+      "monthSpotlight": true,
+      "baseInterest": 35,
+      "idealProduct": {
+        "name": "Woody & Buzz classic plush two-pack",
+        "category": "Plush & toys",
+        "why": "Fourth-weekend box-office legs show sustained family demand, and plush is Toy Story's proven, gift-ready category."
+      },
+      "notes": "Added 2026-07-13: still #3 at the box office in its fourth weekend ($18.5M), showing unusual legs. Merch shelf is deeply saturated, so the play is licensed resale timed to the long theatrical run."
+    },
     {
       "id": "minions-monsters",
       "title": "Minions & Monsters",
@@ -83,17 +119,17 @@ const ENTERTAINMENT_DATA =
         "scale": 8,
         "reachability": 7,
         "merchability": 8,
-        "passion": 7,
+        "passion": 6,
         "competition": 3
       },
       "monthSpotlight": true,
-      "baseInterest": 28,
+      "baseInterest": 24,
       "idealProduct": {
         "name": "Heart of Te Fiti shell pendant",
         "category": "Jewelry",
         "why": "The glowing heart is the film's single icon, and the July release lands squarely on beach-season jewelry demand."
       },
-      "notes": "Opened this week with Dwayne Johnson as Maui. Disney licensing program is mature; watch for a summer beach/vacation merch spike."
+      "notes": "Opened soft July 10 — franchise-low $43M domestic (~$95M worldwide), well under forecasts. Passion trimmed 7→6 on 2026-07-13: fans didn't turn out, so expect licensed-shelf discounting rather than a demand spike."
     },
     {
       "id": "evil-dead-burn",
@@ -125,13 +161,13 @@ const ENTERTAINMENT_DATA =
         "competition": 7
       },
       "monthSpotlight": true,
-      "baseInterest": 12,
+      "baseInterest": 10,
       "idealProduct": {
         "name": "Necronomicon prop journal",
         "category": "Props & replicas",
         "why": "Horror collectors buy props, and the book IS the franchise icon — thin official supply, devoted buyers."
       },
-      "notes": "Niche but devoted horror fandom with strong collector behavior and thin official product — a small but fast whitespace play if reviews land."
+      "notes": "Opened July 10 to $13.7M, roughly half of projections. Collector fandom is intact but the fast whitespace-flip thesis is weakened (2026-07-13); favor evergreen Necronomicon/Deadite designs over film-specific product."
     },
     {
       "id": "the-odyssey",
@@ -403,7 +439,7 @@ const ENTERTAINMENT_DATA =
         "category": "Collectibles",
         "why": "RDJ's Doom is the event's single icon, and villain product is historically under-supplied versus heroes."
       },
-      "notes": "Biggest scale event of the window (RDJ as Doctor Doom), but Marvel licensing saturation means opportunity concentrates in official licensee resale and Doom-specific novelty."
+      "notes": "Biggest scale event of the window (RDJ as Doctor Doom), confirmed head-to-head with Dune: Part Three on Dec 18 ('Dunesday'). Marvel licensing saturation means opportunity concentrates in official licensee resale and Doom-specific novelty."
     },
     {
       "id": "dune-part-three",
@@ -426,7 +462,8 @@ const ENTERTAINMENT_DATA =
         "Arrakis",
         "Atreides",
         "Lisan al Gaib",
-        "sandworm"
+        "sandworm",
+        "Dunesday"
       ],
       "scores": {
         "scale": 7,
@@ -442,7 +479,7 @@ const ENTERTAINMENT_DATA =
         "category": "Apparel",
         "why": "Stillsuit-adjacent desertwear reads as fashion rather than costume, and the keyword universe is uniquely ownable."
       },
-      "notes": "Head-to-head with Doomsday on the same date (one may move). Unique, ownable keyword universe (Arrakis, sandworms) and an under-served adult fandom."
+      "notes": "'Dunesday' confirmed: both films are staying on Dec 18, 2026, and the showdown is generating Barbenheimer-style buzz. Unique, ownable keyword universe (Arrakis, sandworms, now 'Dunesday') and an under-served adult fandom."
     },
     {
       "id": "harry-potter-s1",
@@ -489,7 +526,7 @@ const ENTERTAINMENT_DATA =
       "title": "Percy Jackson and the Olympians — Season 3",
       "type": "TV",
       "releaseDate": "2026-12-12",
-      "releaseWindow": "December 2026 (reports conflict on exact date)",
+      "releaseWindow": "December 2026 (month confirmed by Disney+)",
       "dateConfirmed": false,
       "platform": "Disney+",
       "producers": [
@@ -511,7 +548,7 @@ const ENTERTAINMENT_DATA =
         "reachability": 7,
         "merchability": 6,
         "passion": 7,
-        "competition": 7
+        "competition": 6
       },
       "monthSpotlight": false,
       "baseInterest": 15,
@@ -520,7 +557,7 @@ const ENTERTAINMENT_DATA =
         "category": "Apparel",
         "why": "The camp tee is the franchise's proven bestseller and official supply stays chronically thin."
       },
-      "notes": "Camp Half-Blood tees/hoodies are the franchise's proven item and official supply is thin — a mid-size but reliable teen/YA play."
+      "notes": "December 2026 premiere confirmed. Disney launched an official Percy Jackson online store in July 2026, so official supply is growing — whitespace trimmed 7→6 on 2026-07-13. Camp Half-Blood apparel remains the proven item."
     },
     {
       "id": "ice-age-boiling-point",
@@ -640,9 +677,9 @@ const ENTERTAINMENT_DATA =
       "id": "atla-s2",
       "title": "Avatar: The Last Airbender — Season 2",
       "type": "TV",
-      "releaseDate": "2026-11-15",
-      "releaseWindow": "Late 2026 (expected)",
-      "dateConfirmed": false,
+      "releaseDate": "2026-06-25",
+      "releaseWindow": "Released June 25, 2026 (all 7 episodes)",
+      "dateConfirmed": true,
       "platform": "Netflix",
       "producers": [
         "Netflix",
@@ -665,14 +702,14 @@ const ENTERTAINMENT_DATA =
         "passion": 8,
         "competition": 6
       },
-      "monthSpotlight": false,
+      "monthSpotlight": true,
       "baseInterest": 20,
       "idealProduct": {
         "name": "Four Nations enamel pin set",
         "category": "Pins & accessories",
         "why": "Element symbols are instantly recognizable, low-cost, and collectible-complete — fans buy all four."
       },
-      "notes": "Four-nations emblems and Appa plush are evergreen sellers; live-action season renews demand against a moderately stocked shelf."
+      "notes": "All seven episodes dropped June 25 and it is a current Netflix top title; the final Season 3 is already filmed for 2027. Four-nations emblems and Appa plush remain the proven sellers (dates corrected 2026-07-13)."
     },
     {
       "id": "stranger-things-tales-85",
@@ -711,81 +748,6 @@ const ENTERTAINMENT_DATA =
         "why": "The animated art style opens a fresh retro visual line while the post-finale fandom is still hot."
       },
       "notes": "First spinoff after the flagship's Dec 2025 finale; retro-80s animation style opens a fresh art direction for product while the fandom is still hot."
-    },
-    {
-      "id": "the-madison",
-      "title": "The Madison (Yellowstone universe)",
-      "type": "TV",
-      "releaseDate": "2026-09-15",
-      "releaseWindow": "2026 (expected)",
-      "dateConfirmed": false,
-      "platform": "Paramount+",
-      "producers": [
-        "101 Studios",
-        "MTV Entertainment Studios",
-        "Taylor Sheridan"
-      ],
-      "rightsHolder": "Paramount Consumer Products",
-      "franchise": "Yellowstone universe",
-      "genre": "Family drama (Montana)",
-      "keywords": [
-        "The Madison show",
-        "Yellowstone spinoff",
-        "Montana ranch style",
-        "western lifestyle"
-      ],
-      "scores": {
-        "scale": 6,
-        "reachability": 6,
-        "merchability": 7,
-        "passion": 6,
-        "competition": 7
-      },
-      "monthSpotlight": false,
-      "baseInterest": 8,
-      "idealProduct": {
-        "name": "Montana ranch waxed-canvas tote",
-        "category": "Lifestyle goods",
-        "why": "Yellowstone proved ranch-lifestyle branding outsells character merch; repeat the playbook for this audience."
-      },
-      "notes": "Yellowstone proved ranch-lifestyle branding (Dutton Ranch) outsells character merch. The Madison's NYC-to-Montana premise may repeat the playbook for a female-skewing audience."
-    },
-    {
-      "id": "spider-noir",
-      "title": "Marvel's Spider-Noir",
-      "type": "TV",
-      "releaseDate": "2026-08-15",
-      "releaseWindow": "2026 (expected)",
-      "dateConfirmed": false,
-      "platform": "Prime Video / MGM+",
-      "producers": [
-        "Sony Pictures Television",
-        "Amazon MGM Studios",
-        "Oren Uziel"
-      ],
-      "rightsHolder": "Disney Consumer Products (Marvel controls Spider-Man merchandising)",
-      "franchise": "Marvel / Spider-Man",
-      "genre": "Noir superhero",
-      "keywords": [
-        "Spider-Noir",
-        "Nicolas Cage Spider-Man",
-        "noir comics"
-      ],
-      "scores": {
-        "scale": 6,
-        "reachability": 7,
-        "merchability": 7,
-        "passion": 7,
-        "competition": 7
-      },
-      "monthSpotlight": false,
-      "baseInterest": 12,
-      "idealProduct": {
-        "name": "Art-deco noir Spidey poster print",
-        "category": "Wall art",
-        "why": "The monochrome 1930s aesthetic is distinctive, and there is essentially zero existing product in that style."
-      },
-      "notes": "Nicolas Cage in a 1930s monochrome Spider-verse — a distinctive art style with almost no dedicated product; cult-hit potential."
     },
     {
       "id": "shrek-5",
