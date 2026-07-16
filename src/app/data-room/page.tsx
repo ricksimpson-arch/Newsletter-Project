@@ -92,7 +92,7 @@ export default function DataRoomPage() {
             ) : (
               <ul className="divide-y text-sm">
                 {[...staleFranchises, ...reviewSoonFranchises].map((f) => (
-                  <li key={f.slug} className="flex items-center justify-between gap-2 py-2">
+                  <li key={f.slug} className="flex flex-wrap items-center justify-between gap-2 py-2">
                     <Link href={`/franchises/${f.slug}`} className="underline-offset-4 hover:underline">
                       {f.name}
                     </Link>
@@ -114,7 +114,7 @@ export default function DataRoomPage() {
           <CardContent className="px-4">
             <ul className="divide-y text-sm">
               {undatedSources.map((s) => (
-                <li key={s.id} className="flex items-center justify-between gap-2 py-2">
+                <li key={s.id} className="flex flex-wrap items-center justify-between gap-2 py-2">
                   <span className="min-w-0 flex-1 truncate">{s.title}</span>
                   <span className="flex items-center gap-2">
                     <SourceTierBadge tier={s.tier} />
@@ -136,7 +136,7 @@ export default function DataRoomPage() {
           <CardContent className="px-4">
             <ul className="divide-y text-sm">
               {lowConfidence.map((f) => (
-                <li key={f.slug} className="flex items-center justify-between gap-2 py-2">
+                <li key={f.slug} className="flex flex-wrap items-center justify-between gap-2 py-2">
                   <Link href={`/franchises/${f.slug}`} className="underline-offset-4 hover:underline">
                     #{f.rank} {f.name}
                   </Link>

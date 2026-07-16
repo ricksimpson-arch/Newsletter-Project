@@ -173,12 +173,15 @@ export default function QuadrantChart({ franchises }: { franchises: Franchise[] 
                   };
                   const row = typeof index === "number" ? data[index] : undefined;
                   if (!row?.labeled || x === undefined || y === undefined) return null;
+                  // Alternate labels above/below the bubble to reduce
+                  // collisions in the dense top-right cluster.
+                  const below = (index ?? 0) % 2 === 1;
                   return (
                     <text
                       x={x}
-                      y={(y ?? 0) - 8}
+                      y={below ? (y ?? 0) + 18 : (y ?? 0) - 10}
                       textAnchor="middle"
-                      style={{ fill: "var(--foreground)", fontSize: 10 }}
+                      style={{ fill: "var(--foreground)", fontSize: 10, paintOrder: "stroke", stroke: "var(--card)", strokeWidth: 3 }}
                     >
                       {value}
                     </text>

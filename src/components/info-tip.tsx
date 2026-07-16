@@ -15,10 +15,13 @@ export function InfoTip({
   label,
   children,
   className,
+  trigger,
 }: {
   label: string;
   children: React.ReactNode;
   className?: string;
+  /** Custom visible trigger content; defaults to an info icon. */
+  trigger?: React.ReactNode;
 }) {
   return (
     <Popover>
@@ -27,11 +30,12 @@ export function InfoTip({
           type="button"
           aria-label={label}
           className={cn(
-            "inline-flex size-5 items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+            "inline-flex items-center justify-center rounded-full text-muted-foreground transition-colors hover:text-foreground focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none",
+            trigger ? "rounded-sm" : "size-5",
             className
           )}
         >
-          <InfoIcon aria-hidden className="size-3.5" />
+          {trigger ?? <InfoIcon aria-hidden className="size-3.5" />}
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-80 text-sm" side="top">

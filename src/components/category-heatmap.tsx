@@ -66,6 +66,7 @@ export function CategoryHeatmap({
                   <td key={category.id} className="p-0 text-center">
                     <InfoTip
                       label={`${franchise.name} × ${category.name}: opportunity ${score} of 5`}
+                      trigger={<span aria-hidden>{score}</span>}
                       className={cn(
                         "size-full min-h-8 w-full rounded-sm tnum text-xs font-medium",
                         CELL_SHADES[score - 1]

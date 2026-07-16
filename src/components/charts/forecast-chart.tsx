@@ -34,14 +34,17 @@ export default function ForecastChart({
   const single = franchises.length === 1;
   const horizons = [0, 6, 12, 24] as const;
   const data = horizons.map((h) => {
-    const row: Record<string, number | string> = { horizon: h, label: h === 0 ? "Now" : `${h} mo` };
+    const row: Record<string, number | string | [number, number]> = {
+      horizon: h,
+      label: h === 0 ? "Now" : `${h} mo`,
+    };
     for (const f of franchises) {
       const point = f.forecasts.find((p) => p.horizonMonths === h)!;
       row[f.name] = point.projectedScore;
       if (single) {
-        row.low = point.lowCase;
-        row.bandHeight = point.highCase - point.lowCase;
+        row.band = [point.lowCase, point.highCase];
         row.high = point.highCase;
+        row.low = point.lowCase;
       }
     }
     return row;
@@ -109,27 +112,20 @@ export default function ForecastChart({
             />
             <Tooltip
               contentStyle={CHART_STYLE.tooltip}
-              formatter={(value, name) =>
-                name === "low" || name === "bandHeight"
-                  ? [null, null]
-                  : [Number(value).toFixed(1), String(name)]
-              }
+              formatter={(value, name) => {
+                if (Array.isArray(value)) {
+                  return [`${Number(value[0]).toFixed(1)} – ${Number(value[1]).toFixed(1)}`, "Low–high band"];
+                }
+                return [Number(value).toFixed(1), String(name)];
+              }}
             />
             {single && (
               <>
                 <Area
-                  dataKey="low"
-                  stackId="band"
-                  stroke="none"
-                  fill="transparent"
-                  isAnimationActive={false}
-                />
-                <Area
-                  dataKey="bandHeight"
-                  stackId="band"
+                  dataKey="band"
                   stroke="none"
                   fill="var(--forecast)"
-                  fillOpacity={0.14}
+                  fillOpacity={0.16}
                   isAnimationActive={false}
                   name="Low–high band"
                 />
@@ -141,6 +137,15 @@ export default function ForecastChart({
                   dot={false}
                   isAnimationActive={false}
                   name="High case"
+                />
+                <Line
+                  dataKey="low"
+                  stroke="var(--forecast)"
+                  strokeDasharray="4 4"
+                  strokeWidth={1.5}
+                  dot={false}
+                  isAnimationActive={false}
+                  name="Low case"
                 />
               </>
             )}
