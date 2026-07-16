@@ -2,9 +2,9 @@ const ENTERTAINMENT_DATA =
 {
   "meta": {
     "appName": "Entertainment Radar",
-    "generated": "2026-07-13",
+    "generated": "2026-07-14",
     "windowLabel": "July 2026 – June 2027",
-    "disclaimer": "Scores are analyst estimates for ecommerce planning, last refreshed 2026-07-13 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
+    "disclaimer": "Scores are analyst estimates for ecommerce planning, last refreshed 2026-07-14 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
   },
   "weights": {
     "scale": 0.3,
@@ -21,6 +21,44 @@ const ENTERTAINMENT_DATA =
     "competition": "Market whitespace. 10 = wide-open, few products or licensees; 1 = saturated shelf. Surprise hits with low competition are the biggest opportunities."
   },
   "titles": [
+    {
+      "id": "off-campus-s1",
+      "title": "Off Campus",
+      "type": "TV",
+      "releaseDate": "2026-05-13",
+      "releaseWindow": "Streaming now (premiered May 13, 2026; S2 renewed)",
+      "dateConfirmed": true,
+      "platform": "Prime Video",
+      "producers": [
+        "Amazon MGM Studios",
+        "Louisa Levy (creator)"
+      ],
+      "rightsHolder": "Amazon MGM Studios (series); Elle Kennedy / Bloom Books control book-side rights",
+      "franchise": "Off-Campus (Elle Kennedy novels)",
+      "genre": "Hockey romance drama",
+      "keywords": [
+        "Off Campus show",
+        "Briar University",
+        "Garrett Graham",
+        "Elle Kennedy",
+        "hockey romance"
+      ],
+      "scores": {
+        "scale": 7,
+        "reachability": 7,
+        "merchability": 8,
+        "passion": 9,
+        "competition": 8
+      },
+      "monthSpotlight": true,
+      "baseInterest": 20,
+      "idealProduct": {
+        "name": "Briar University hockey hoodie",
+        "category": "Collegiate apparel",
+        "why": "The fictional college IS the brand — a record women-18-34 audience buys collegiate and bookish merch, BookTok primed demand years ago, and official supply is near zero."
+      },
+      "notes": "Added 2026-07-14 after a user flag: premiered May 13 with 36M viewers in 12 days — Prime Video's #3 series debut ever and #1 all-time among women 18-34 — and still top of the Prime charts two months in. Season 2 (Dean & Allie) already renewed. Near-zero official merch makes this the board's best pure whitespace play."
+    },
     {
       "id": "toy-story-5",
       "title": "Toy Story 5",
