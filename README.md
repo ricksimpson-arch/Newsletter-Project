@@ -1,76 +1,36 @@
-# Entertainment Radar
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-**Live site:** https://ricksimpson-arch.github.io/Newsletter-Project/ (GitHub Pages,
-deployed from this branch — updates automatically on every push, including the
-weekly data refresh).
+## Getting Started
 
-Entertainment-sector business intelligence for ecommerce teams: which movies and
-TV shows in the next 12 months are worth building merchandise programs around,
-who owns the consumer-product rights, and a daily email brief that keeps staff
-on top of the release calendar.
-
-## What's inside
-
-| File | Purpose |
-|---|---|
-| `index.html` | The web app — six tabs: **This Month** (July 2026 spotlight), **Deep Dive** (highest-potential title), **12-Month Calendar** (releases + producers + rights holders, CSV export), **Ecommerce Rankings** (5-dimension scored board, CSV export), **Relevance Signals** (modeled 12-month search-trend curve, momentum chip, passion gauge, and ideal-product pick per title), **Daily Email Feed** (live preview + setup) |
-| `data.js` | The dataset — every tracked title with release info, producers, consumer-product rights holder, keywords, 1–10 scores, a `baseInterest` year-round search baseline, and an `idealProduct` recommendation. Edit this file to update the app; the dashboard, spreadsheets, and email all read from it. |
-| `daily_digest.py` | Builds the daily brief from `data.js` and emails it to subscribers (`--preview` / `--send`) |
-| `newsletter.py` | Subscriber management (JSON-backed) and SMTP sending primitives |
-| `build_artifact.py` | Writes `dist/`: a single-file standalone copy of the site (email-able, double-click to open) and an artifact-ready copy for claude.ai publishing |
-
-## Weekly refresh
-
-The dataset is refreshed weekly by a scheduled Claude routine: each Monday it
-checks release schedules and trend news, updates `data.js` (and the Deep Dive
-if the top title changes), verifies the build, pushes to this branch, and
-republishes the hosted launcher page at the same URL. `meta.generated` in
-`data.js` always shows the date of the last refresh.
-
-## Launching the website
-
-The site is fully self-contained static files — any of these works:
-
-- **Just open it:** double-click `index.html` (works from `file://`, no server needed).
-- **Local server:** `python3 -m http.server 8000` then visit `http://localhost:8000`.
-- **Website launcher / static host:** drag the project folder into Netlify Drop,
-  Vercel, GitHub Pages, or any static-site host. No build step, no dependencies.
-
-## The scoring model
-
-Each title is scored 1–10 on five dimensions, weighted into a 0–100 composite:
-
-| Dimension | Weight | Meaning |
-|---|---|---|
-| Scale | 30% | Size of the US fandom |
-| Reachability | 25% | Ownable search keywords on ecommerce sites & Amazon |
-| Merchability | 20% | How well the content translates into desirable product |
-| Passion | 15% | Fan propensity to buy, wear, collect, gift |
-| Competition (whitespace) | 10% | 10 = wide-open market, 1 = saturated shelf |
-
-## The daily email
+First, run the development server:
 
 ```bash
-# preview today's issue (nothing is sent)
-python3 daily_digest.py --preview
-
-# subscribe a staff member
-python3 -c "from newsletter import Newsletter; Newsletter('Entertainment Radar').subscribe('teammate@yourcompany.com', name='Sam')"
-
-# send for real
-export SMTP_HOST=smtp.yourcompany.com SMTP_PORT=587
-export SMTP_USER=radar@yourcompany.com SMTP_PASS=... DIGEST_FROM=radar@yourcompany.com
-python3 daily_digest.py --send
-
-# automate: weekdays at 7:00 AM (crontab -e)
-0 7 * * 1-5 cd /path/to/Newsletter-Project && python3 daily_digest.py --send
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-## Caveats
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Scores are analyst estimates compiled 2026-07-11 from public release schedules and
-trade reporting — a planning aid, not a licensing database. Release dates shift;
-always verify merchandising rights with the listed rights holder before committing
-inventory. The Deep Dive tab's editorial analysis is written for the current top
-title (`spiderman-brand-new-day`); if the data changes the crown, update the
-`editorial` block in `index.html` to match.
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
