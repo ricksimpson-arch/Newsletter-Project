@@ -1,5 +1,9 @@
 # Entertainment Radar
 
+**Live site:** https://ricksimpson-arch.github.io/Newsletter-Project/ (GitHub Pages,
+deployed from this branch — updates automatically on every push, including the
+weekly data refresh).
+
 Entertainment-sector business intelligence for ecommerce teams: which movies and
 TV shows in the next 12 months are worth building merchandise programs around,
 who owns the consumer-product rights, and a daily email brief that keeps staff
