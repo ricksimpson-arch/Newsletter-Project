@@ -34,16 +34,17 @@
   /* Semantic signal palette */
   --signal: oklch(0.55 0.13 230);          /* electric cyan/blue: primary actions */
   --signal-foreground: oklch(0.985 0 0);
-  --opportunity: oklch(0.72 0.15 70);      /* warm amber: opportunity alerts */
-  --forecast: oklch(0.55 0.16 295);        /* muted violet: forecast data */
+  --opportunity: oklch(0.66 0.15 75);      /* warm amber: opportunity alerts */
+  --forecast: oklch(0.45 0.17 300);        /* muted violet: forecast data */
   --favorable: oklch(0.55 0.14 155);       /* green: favorable indicators */
   --warning-risk: oklch(0.55 0.2 25);      /* red: warnings / high licensing risk */
 
-  --chart-1: oklch(0.6 0.13 230);
-  --chart-2: oklch(0.6 0.16 295);
-  --chart-3: oklch(0.72 0.15 70);
-  --chart-4: oklch(0.58 0.14 155);
-  --chart-5: oklch(0.58 0.18 25);
+  /* Categorical chart palette, fixed order, validated for CVD + contrast. */
+  --chart-1: oklch(0.52 0.13 235); /* #0072a8 */
+  --chart-2: oklch(0.66 0.15 75);  /* #c78200 */
+  --chart-3: oklch(0.45 0.17 300); /* #6635a3 */
+  --chart-4: oklch(0.55 0.14 155); /* #00884b */
+  --chart-5: oklch(0.55 0.2 25);   /* reserved status red, never a series color */
 
   --sidebar: oklch(0.97 0.006 250);
   --sidebar-foreground: oklch(0.25 0.03 255);
@@ -78,16 +79,17 @@
 
   --signal: oklch(0.78 0.12 215);
   --signal-foreground: oklch(0.17 0.03 255);
-  --opportunity: oklch(0.8 0.14 75);
-  --forecast: oklch(0.72 0.13 295);
-  --favorable: oklch(0.74 0.14 155);
+  --opportunity: oklch(0.66 0.12 80);
+  --forecast: oklch(0.6 0.15 300);
+  --favorable: oklch(0.64 0.12 155);
   --warning-risk: oklch(0.68 0.19 25);
 
-  --chart-1: oklch(0.78 0.12 215);
-  --chart-2: oklch(0.72 0.13 295);
-  --chart-3: oklch(0.8 0.14 75);
-  --chart-4: oklch(0.74 0.14 155);
-  --chart-5: oklch(0.68 0.19 25);
+  /* Dark-mode categorical steps, validated against the card surface. */
+  --chart-1: oklch(0.66 0.11 215); /* #21a3bc */
+  --chart-2: oklch(0.66 0.12 80);  /* #b8892d */
+  --chart-3: oklch(0.6 0.15 300);  /* #8f68cb */
+  --chart-4: oklch(0.64 0.12 155); /* #46a16b */
+  --chart-5: oklch(0.68 0.19 25);  /* reserved status red, never a series color */
 
   --sidebar: oklch(0.145 0.022 262);
   --sidebar-foreground: oklch(0.9 0.01 250);

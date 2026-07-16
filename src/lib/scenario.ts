@@ -310,11 +310,13 @@ export function computeScenarioResults(
     .slice(-5)
     .sort((a, b) => a.rankChange - b.rankChange);
 
-  const allocation = rows.slice(0, ALLOCATION_PERCENTS.length).map((row, i) => ({
-    label: row.franchise.name,
-    slug: row.franchise.slug,
-    percent: ALLOCATION_PERCENTS[i],
-  }));
+  const allocation: ScenarioResults["allocation"] = rows
+    .slice(0, ALLOCATION_PERCENTS.length)
+    .map((row, i) => ({
+      label: row.franchise.name,
+      slug: row.franchise.slug as string | null,
+      percent: ALLOCATION_PERCENTS[i],
+    }));
   allocation.push({ label: "Exploratory / benchmark tests", slug: null, percent: 5 });
 
   const categoryWeights = new Map<string, number>();
