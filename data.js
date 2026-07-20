@@ -2,9 +2,9 @@ const ENTERTAINMENT_DATA =
 {
   "meta": {
     "appName": "Entertainment Radar",
-    "generated": "2026-07-14",
+    "generated": "2026-07-20",
     "windowLabel": "July 2026 – June 2027",
-    "disclaimer": "Scores are analyst estimates for ecommerce planning, last refreshed 2026-07-14 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
+    "disclaimer": "Scores are analyst estimates for ecommerce planning, last refreshed 2026-07-20 from public release schedules and trade reporting. Release dates shift; verify licensing status with the rights holder before committing inventory."
   },
   "weights": {
     "scale": 0.3,
@@ -21,6 +21,82 @@ const ENTERTAINMENT_DATA =
     "competition": "Market whitespace. 10 = wide-open, few products or licensees; 1 = saturated shelf. Surprise hits with low competition are the biggest opportunities."
   },
   "titles": [
+    {
+      "id": "dutton-ranch",
+      "title": "Dutton Ranch (Yellowstone sequel)",
+      "type": "TV",
+      "releaseDate": "2026-05-15",
+      "releaseWindow": "S1 streaming (finale July 3, 2026); S2 renewed",
+      "dateConfirmed": true,
+      "platform": "Paramount Network / Paramount+",
+      "producers": [
+        "101 Studios",
+        "MTV Entertainment Studios",
+        "Taylor Sheridan"
+      ],
+      "rightsHolder": "Paramount Consumer Products",
+      "franchise": "Yellowstone universe",
+      "genre": "Ranch drama",
+      "keywords": [
+        "Dutton Ranch",
+        "Beth Dutton",
+        "Rip Wheeler",
+        "Yellowstone sequel",
+        "ranch lifestyle"
+      ],
+      "scores": {
+        "scale": 8,
+        "reachability": 8,
+        "merchability": 9,
+        "passion": 8,
+        "competition": 4
+      },
+      "monthSpotlight": true,
+      "baseInterest": 30,
+      "idealProduct": {
+        "name": "South Texas ranch-brand tee & waxed cap set",
+        "category": "Ranch-lifestyle apparel",
+        "why": "Dutton Ranch is the proven king of TV lifestyle merch, and the Beth & Rip sequel adds a fresh South Texas ranch mark exactly as post-finale demand peaks."
+      },
+      "notes": "Added 2026-07-20: the Beth & Rip Yellowstone sequel premiered May 15, its finale dropped July 3, and it is currently #2 on Samba's streaming chart behind only House of the Dragon. S2 renewed with Benjamin Cavell as showrunner. Existing Dutton Ranch merch is established (whitespace 4) but the new-series South Texas angle is fresh."
+    },
+    {
+      "id": "little-house-2026",
+      "title": "Little House on the Prairie (2026)",
+      "type": "TV",
+      "releaseDate": "2026-07-09",
+      "releaseWindow": "Streaming now (all 8 episodes, July 9, 2026); S2 renewed",
+      "dateConfirmed": true,
+      "platform": "Netflix",
+      "producers": [
+        "Netflix",
+        "Friendly Family Productions"
+      ],
+      "rightsHolder": "Netflix Consumer Products (with Friendly Family Productions / Little House estate)",
+      "franchise": "Little House on the Prairie",
+      "genre": "Family western drama",
+      "keywords": [
+        "Little House on the Prairie",
+        "Laura Ingalls",
+        "prairie dress",
+        "prairiecore"
+      ],
+      "scores": {
+        "scale": 7,
+        "reachability": 6,
+        "merchability": 6,
+        "passion": 6,
+        "competition": 8
+      },
+      "monthSpotlight": true,
+      "baseInterest": 15,
+      "idealProduct": {
+        "name": "Prairie-core calico apron & dress line",
+        "category": "Fashion & home",
+        "why": "The reimagining lands directly on the prairiecore/cottagecore fashion trend; aesthetic-led shows sell lifestyle product without needing logos, and official supply is essentially zero."
+      },
+      "notes": "Added 2026-07-20: premiered July 9 with all eight episodes and is currently Netflix's #1 US series; renewed for S2 before premiere. Multigenerational nostalgia plus the prairiecore fashion wave make this a quiet but wide-open aesthetic play."
+    },
     {
       "id": "off-campus-s1",
       "title": "Off Campus",
@@ -212,7 +288,7 @@ const ENTERTAINMENT_DATA =
       "title": "The Odyssey",
       "type": "Movie",
       "releaseDate": "2026-07-17",
-      "releaseWindow": "July 17, 2026",
+      "releaseWindow": "In theaters (opened July 17, 2026)",
       "dateConfirmed": true,
       "platform": "Theatrical (Universal)",
       "producers": [
@@ -229,10 +305,10 @@ const ENTERTAINMENT_DATA =
         "Odysseus"
       ],
       "scores": {
-        "scale": 6,
-        "reachability": 3,
-        "merchability": 4,
-        "passion": 7,
+        "scale": 8,
+        "reachability": 4,
+        "merchability": 5,
+        "passion": 8,
         "competition": 8
       },
       "monthSpotlight": true,
@@ -242,7 +318,7 @@ const ENTERTAINMENT_DATA =
         "category": "Adjacent home goods",
         "why": "The prestige audience buys literary-adjacent product; an unbranded Homer line avoids gated film trademarks entirely."
       },
-      "notes": "The month's prestige event, but 'Odyssey' is a generic, hard-to-own keyword and Nolan films historically drive little merchandise."
+      "notes": "Opened to $124.5M domestic / $257.8M worldwide — 2026's biggest live-action opening, Nolan's career best, A CinemaScore, 95% RT. Scores raised 2026-07-20 (scale 6→8, passion 7→8, merch 4→5): it's a cultural event now. Keywords stay weak — the play is literary/Greek-mythology adjacent product, and it's wide open."
     },
     {
       "id": "spiderman-brand-new-day",
@@ -326,7 +402,7 @@ const ENTERTAINMENT_DATA =
         "category": "Fan-allegiance home goods",
         "why": "Weekly episodes force viewers to pick a side; allegiance product converts hardest during the airing window."
       },
-      "notes": "Mid-season right now with weekly Sunday episodes through Aug 9. House sigils, Team Black/Team Green, and dragon iconography are proven sellers with moderate saturation — the month's best whitespace-adjusted play."
+      "notes": "Topped Samba's weekly streaming chart (week ended Jul 12) mid-season; weekly Sunday episodes through Aug 9. House sigils, Team Black/Team Green, and dragon iconography are proven sellers with moderate saturation — still the month's best whitespace-adjusted TV play alongside Dutton Ranch."
     },
     {
       "id": "practical-magic-2",
