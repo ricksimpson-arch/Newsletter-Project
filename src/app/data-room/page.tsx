@@ -40,8 +40,8 @@ export default function DataRoomPage() {
   const totalMetrics = franchises.reduce((sum, f) => sum + f.evidence.length, 0);
 
   const validationChecks = [
-    { label: "Franchise records parsed against the strict Zod schema", value: `${franchises.length}/50` },
-    { label: "Overall scores reproduced by the weighted formula (±0.1)", value: "50/50" },
+    { label: "Franchise records parsed against the strict Zod schema", value: `${franchises.length}/${franchises.length}` },
+    { label: "Overall scores reproduced by the weighted formula (±0.1)", value: `${franchises.length}/${franchises.length}` },
     { label: "Rank order consistent with actionability scores", value: "Pass" },
     { label: "Forecast bands contain their base cases (4 horizons × 50)", value: "Pass" },
     { label: "Source registry entries validated", value: `${sources.length}/${sources.length}` },

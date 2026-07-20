@@ -117,6 +117,29 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         isModeled: false,
         note: "Retail proxy from specialty-retailer listings.",
       },
+      {
+        id: "hd2-xbox-launch",
+        label: "Xbox Series X|S launch",
+        value: "August 26, 2025",
+        asOfDate: "2025-08-26",
+        sourceIds: ["xbox-wire-helldivers"],
+        sourceTier: "tier-1",
+        confidence: 92,
+        isModeled: false,
+        note: "First PlayStation-published title on Xbox; launch roughly tripled concurrent players across platforms.",
+      },
+      {
+        id: "hd2-total-units-2026",
+        label: "Total copies sold (reported)",
+        value: 20_000_000,
+        unit: "copies",
+        asOfDate: "2026-01-15",
+        sourceIds: ["purexbox-helldivers-20m"],
+        sourceTier: "tier-2",
+        confidence: 65,
+        isModeled: false,
+        note: "Reported figure (~1.6M on Xbox), not an official Sony disclosure — treat as directional.",
+      },
     ],
     hasPublicSalesData: true,
     confidenceComponents: {
@@ -143,7 +166,9 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       staleDisclosures: false,
     },
     extraAssumptions: {
-      6: ["Live-service content cadence continues at its established rhythm."],
+      6: [
+        "Live-service content cadence continues at its established rhythm (Warhammer 40,000 crossover Warbond announced May 2026).",
+      ],
       12: ["Community engagement holds within the volatile band observed to date."],
       24: ["Wearable faction culture persists even if concurrent players decline."],
     },
@@ -153,9 +178,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "steamdb-helldivers",
       "ps-blog-helldivers-merch",
       "fangamer-helldivers",
+      "xbox-wire-helldivers",
+      "purexbox-helldivers-20m",
       "ps-licensing-program",
     ],
-    lastVerifiedAt: "2026-07-09",
+    lastVerifiedAt: "2026-07-16",
   },
   {
     rank: 2,
@@ -301,7 +328,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     criterionProvenance: "research",
     commercialRead: "Prestige samurai aesthetic with elegant product language",
     executiveSummary:
-      "Ghost of Tsushima is the strongest design-led opportunity on the board: masks, fox motifs, clan symbols, and brushwork calligraphy form a restrained product language that supports premium minimalist apparel and gifts. The market is meaningfully less crowded than other top-tier Sony IP.",
+      "Ghost of Tsushima is the strongest design-led opportunity on the board: masks, fox motifs, clan symbols, and brushwork calligraphy form a restrained product language that supports premium minimalist apparel and gifts. The market is meaningfully less crowded than other top-tier Sony IP — and Ghost of Yōtei (Oct 2025, 3.3M+ units in its first month) has turned the franchise's momentum from assumption into fact.",
     mainOpportunity:
       "A premium minimalist capsule — embroidered headwear, heavyweight tees, art prints, journals — that trades on elegance rather than logos.",
     mainRisk:
@@ -378,6 +405,18 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         confidence: 72,
         isModeled: false,
       },
+      {
+        id: "got-yotei-units",
+        label: "Ghost of Yōtei units sold (first month)",
+        value: 3_300_000,
+        unit: "units",
+        asOfDate: "2025-11-02",
+        sourceIds: ["gematsu-yotei-sales"],
+        sourceTier: "tier-2",
+        confidence: 85,
+        isModeled: false,
+        note: "Sony FY25 Q2 earnings figure via press coverage; Sony stated it outperformed Tsushima over the same period. Legends co-op mode announced Feb 2026.",
+      },
     ],
     hasPublicSalesData: true,
     confidenceComponents: {
@@ -397,17 +436,24 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       saturationAdjustment: 0.4,
       stalenessAdjustment: 0.3,
     },
-    extraAssumptions: {
-      12: ["The modeled franchise-continuation catalyst remains unconfirmed."],
+    flags: {
+      unconfirmedCatalysts: false,
+      multiPartyLicensing: false,
+      volatileEngagement: false,
+      staleDisclosures: false,
     },
-    catalystIds: ["unconfirmed-mainline-release", "q4-gifting"],
+    extraAssumptions: {
+      12: ["Ghost of Yōtei momentum (3.3M+ first-month units) carries through the Legends co-op window."],
+    },
+    catalystIds: ["yotei-release-momentum", "q4-gifting"],
     sourceIds: [
       "sie-timeline",
       "steamdb-ghost-of-tsushima",
       "fangamer-ghost-of-tsushima",
+      "gematsu-yotei-sales",
       "ps-licensing-program",
     ],
-    lastVerifiedAt: "2026-07-09",
+    lastVerifiedAt: "2026-07-16",
   },
   {
     rank: 4,
@@ -1021,7 +1067,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     criterionProvenance: "research",
     commercialRead: "Premium niche with art direction and collector spending",
     executiveSummary:
-      "Death Stranding is a high-AOV niche: a smaller but intensely engaged audience that pays observed prices from ~$27.50 shirts to $95 jewelry and $200+ collector items. Typography, world-building marks, and technical-gear aesthetics support premium product with low mainstream competition.",
+      "Death Stranding is a high-AOV niche: a smaller but intensely engaged audience that pays observed prices from ~$27.50 shirts to $95 jewelry and $200+ collector items. Typography, world-building marks, and technical-gear aesthetics support premium product with low mainstream competition. Death Stranding 2: On the Beach (June 2025) refreshed the franchise, and its planned 2026 PC release widens the audience.",
     mainOpportunity:
       "Premium technical apparel, patches, and jewelry trading on the game's logistics/gear aesthetic and typography.",
     mainRisk:
@@ -1084,6 +1130,17 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         confidence: 85,
         isModeled: false,
       },
+      {
+        id: "ds2-release",
+        label: "Death Stranding 2: On the Beach release",
+        value: "Released June 2025 on PS5 · PC release planned for 2026",
+        asOfDate: "2025-06-26",
+        sourceIds: ["kojima-store-death-stranding"],
+        sourceTier: "tier-2",
+        confidence: 85,
+        isModeled: false,
+        note: "Sequel refreshed franchise engagement; unit sales not officially disclosed.",
+      },
     ],
     hasPublicSalesData: false,
     confidenceComponents: {
@@ -1104,17 +1161,17 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       stalenessAdjustment: 0.5,
     },
     flags: {
-      unconfirmedCatalysts: true,
+      unconfirmedCatalysts: false,
       multiPartyLicensing: true,
       volatileEngagement: false,
       staleDisclosures: false,
     },
     extraAssumptions: {
-      12: ["The modeled franchise-continuation catalyst remains unconfirmed."],
+      12: ["Death Stranding 2 momentum carries into the planned 2026 PC release."],
     },
-    catalystIds: ["unconfirmed-mainline-release"],
+    catalystIds: ["ds2-release-momentum"],
     sourceIds: ["kojima-store-death-stranding", "ps-licensing-program"],
-    lastVerifiedAt: "2026-07-09",
+    lastVerifiedAt: "2026-07-16",
   },
   {
     rank: 10,

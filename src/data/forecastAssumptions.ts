@@ -53,6 +53,22 @@ const RAW_CATALYSTS: Catalyst[] = [
     note: "Treated purely as a scenario assumption; no release is confirmed in the seed research.",
   },
   {
+    id: "yotei-release-momentum",
+    label: "Ghost of Yōtei release momentum",
+    type: "release",
+    confirmed: true,
+    expectedWindow: "Active — released October 2, 2025",
+    note: "Ghost of Yōtei passed 3.3M units in its first month (Sony FY25 Q2 earnings), outperforming Tsushima's same-period sales; the Legends co-op mode (announced Feb 2026) extends the window.",
+  },
+  {
+    id: "ds2-release-momentum",
+    label: "Death Stranding 2 release momentum",
+    type: "release",
+    confirmed: true,
+    expectedWindow: "Active — released June 2025; PC release planned for 2026",
+    note: "Death Stranding 2: On the Beach shipped on PS5 in June 2025; the planned 2026 PC release broadens the addressable fan base.",
+  },
+  {
     id: "q4-gifting",
     label: "Q4 holiday gifting peak",
     type: "seasonal",

@@ -4,7 +4,11 @@ import { benchmarkFranchises, franchiseBySlug, franchises } from "@/data/franchi
 import { sources } from "@/data/sources";
 import { computeOverallScore } from "@/lib/scoring";
 
-/** The exact default ranking order from the seed research. */
+/**
+ * The exact default ranking order: the original seed top-50 (relative
+ * order preserved exactly) plus Saros, added at rank 30 in the July 2026
+ * research update after its April 30, 2026 release.
+ */
 const EXPECTED_ORDER: Array<[string, number]> = [
   ["Helldivers 2", 86.0],
   ["God of War", 85.1],
@@ -35,6 +39,7 @@ const EXPECTED_ORDER: Array<[string, number]> = [
   ["Silent Hill", 69.5],
   ["Nioh", 68.7],
   ["Days Gone", 68.1],
+  ["Saros", 68.0],
   ["Street Fighter", 67.8],
   ["Crash Bandicoot", 67.6],
   ["Tekken", 67.5],
@@ -59,13 +64,19 @@ const EXPECTED_ORDER: Array<[string, number]> = [
 ];
 
 describe("seed dataset", () => {
-  it("contains exactly 50 franchises", () => {
-    expect(franchises).toHaveLength(50);
+  it("contains exactly 51 franchises (seed 50 + Saros)", () => {
+    expect(franchises).toHaveLength(51);
   });
 
-  it("matches the seed top-50 order and scores exactly", () => {
+  it("matches the expected ranking order and scores exactly", () => {
     const actual = franchises.map((f) => [f.name, f.overallScore]);
     expect(actual).toEqual(EXPECTED_ORDER);
+  });
+
+  it("preserves the original seed top-50 relative order exactly", () => {
+    const seedNames = EXPECTED_ORDER.map(([name]) => name).filter((n) => n !== "Saros");
+    const actualSeedOrder = franchises.map((f) => f.name).filter((n) => n !== "Saros");
+    expect(actualSeedOrder).toEqual(seedNames);
   });
 
   it("reproduces every overall score from criterion scores within ±0.1", () => {

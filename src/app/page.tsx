@@ -65,7 +65,7 @@ export default function DashboardPage() {
           The strongest game IP opportunities for physical merchandise
         </h1>
         <p className="mt-3 max-w-2xl text-sm text-muted-foreground lg:text-base">
-          LootSignal ranks 50 franchises by demand, fandom depth, design potential, licensing
+          LootSignal ranks {franchises.length} franchises by demand, fandom depth, design potential, licensing
           feasibility, audience fit, pricing power, and market whitespace — so the team spends its
           time on fandoms worth building for.
         </p>

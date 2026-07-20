@@ -8,7 +8,7 @@ import { franchises } from "@/data/franchises";
 export const metadata: Metadata = {
   title: "Franchise Rankings",
   description:
-    "All 50 evaluated franchises ranked by small-company actionability, with filters, search, and CSV export.",
+    "All evaluated franchises ranked by small-company actionability, with filters, search, and CSV export.",
 };
 
 export default function RankingsPage() {
@@ -17,7 +17,7 @@ export default function RankingsPage() {
       <header>
         <h1 className="text-2xl font-bold tracking-tight">Franchise Rankings</h1>
         <p className="mt-1 max-w-3xl text-sm text-muted-foreground">
-          All 50 franchises ranked by <strong>small-company actionability</strong> — the weighted
+          All {franchises.length} franchises ranked by <strong>small-company actionability</strong> — the weighted
           model that prices in licensing friction, saturation, and operational exposure. Filters
           are shareable via the URL.
         </p>

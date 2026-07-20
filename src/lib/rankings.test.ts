@@ -5,7 +5,7 @@ import { DEFAULT_FILTER, filterFranchises, sortFranchises } from "@/lib/rankings
 
 describe("filterFranchises", () => {
   it("returns everything under the default filter", () => {
-    expect(filterFranchises(franchises, DEFAULT_FILTER)).toHaveLength(50);
+    expect(filterFranchises(franchises, DEFAULT_FILTER)).toHaveLength(franchises.length);
   });
 
   it("searches by name, case-insensitively", () => {
@@ -15,7 +15,9 @@ describe("filterFranchises", () => {
 
   it("filters the Sony family (everything except non-Sony)", () => {
     const result = filterFranchises(franchises, { ...DEFAULT_FILTER, ownership: "sony-family" });
-    expect(result.length).toBe(50 - franchises.filter((f) => f.ownershipType === "non-sony").length);
+    expect(result.length).toBe(
+      franchises.length - franchises.filter((f) => f.ownershipType === "non-sony").length
+    );
     expect(result.every((f) => f.ownershipType !== "non-sony")).toBe(true);
   });
 

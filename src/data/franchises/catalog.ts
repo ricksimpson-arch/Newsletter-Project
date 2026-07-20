@@ -415,8 +415,47 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     whitespace: ["Biker-patch culture unserved", "Workwear apparel angle"],
     licensingComplexity: 4,
   }),
+  {
+    ...compact({
+      rank: 30,
+      name: "Saros",
+      slug: "saros",
+      ownership: "sony-owned",
+      audience: "collector-niche",
+      score: 68.0,
+      criteria: { brandRecognition: 4.6, momentum: 7.6, fandomEngagement: 5.6, visualSuitability: 8.6, licensingFeasibility: 8.4, demographicFit: 6.2, priceElasticity: 7.4, whitespace: 8.4 },
+      read: "Newest Sony IP (Apr 2026); striking art direction, unproven fandom",
+      summary:
+        "Housemarque's Saros (released April 30, 2026, with a 91% OpenCritic recommendation rate) is Sony's newest first-party IP: a solar bullet-hell aesthetic with strong poster and pin potential. Merch demand is entirely unproven this early, so it enters as a test-and-monitor position with wide-open whitespace.",
+      opportunity: "Art-led prints, pins, and premium apparel while the launch window keeps attention high and no licensed merch exists.",
+      risk: "Brand-new IP: no established fandom, no sales disclosures yet, and demand could fade after the launch window.",
+      best: ["posters-prints", "pins-patches", "tshirts", "desk-accessories", "premium-collectibles"],
+      themes: ["Solar-eclipse motifs", "Bullet-hell particle patterns", "Enforcer-suit silhouettes"],
+      whitespace: ["No licensed merch exists yet — first-mover window", "Sci-fi art-print market"],
+      licensingComplexity: 4,
+      landscape: [
+        "No official merchandise program observed at launch; whitespace is total but demand is unproven.",
+      ],
+      confidence: CONFIDENCE_PRESETS.recentRelease,
+      sourceIds: ["opencritic-saros", "wikipedia-saros", "ps-licensing-program", "lootsignal-internal-model"],
+      lastVerifiedAt: "2026-07-16",
+    }),
+    evidence: [
+      {
+        id: "saros-release",
+        label: "Release and critical reception",
+        value: "Released April 30, 2026 (PS5) · 91% OpenCritic recommendation",
+        asOfDate: "2026-04-30",
+        sourceIds: ["opencritic-saros", "wikipedia-saros"],
+        sourceTier: "tier-2",
+        confidence: 80,
+        isModeled: false,
+        note: "Delayed from March 20, 2026; developed by Sony-owned Housemarque.",
+      },
+    ],
+  },
   compact({
-    rank: 30,
+    rank: 31,
     name: "Street Fighter",
     slug: "street-fighter",
     ownership: "non-sony",
@@ -436,7 +475,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Decades of licensed apparel, arcade nostalgia goods, and collectibles worldwide."],
   }),
   compact({
-    rank: 31,
+    rank: 32,
     name: "Crash Bandicoot",
     slug: "crash-bandicoot",
     ownership: "non-sony",
@@ -455,7 +494,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Mass-retail licensed product already spans apparel, plush, and toys."],
   }),
   compact({
-    rank: 32,
+    rank: 33,
     name: "Tekken",
     slug: "tekken",
     ownership: "non-sony",
@@ -473,7 +512,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 7,
   }),
   compact({
-    rank: 33,
+    rank: 34,
     name: "Jak and Daxter",
     slug: "jak-and-daxter",
     ownership: "legacy",
@@ -491,7 +530,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 34,
+    rank: 35,
     name: "Sly Cooper",
     slug: "sly-cooper",
     ownership: "legacy",
@@ -509,7 +548,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 35,
+    rank: 36,
     name: "Ape Escape",
     slug: "ape-escape",
     ownership: "legacy",
@@ -528,7 +567,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     catalystIds: ["q4-gifting"],
   }),
   compact({
-    rank: 36,
+    rank: 37,
     name: "Returnal",
     slug: "returnal",
     ownership: "sony-owned",
@@ -546,7 +585,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 37,
+    rank: 38,
     name: "inFAMOUS",
     slug: "infamous",
     ownership: "legacy",
@@ -564,7 +603,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 38,
+    rank: 39,
     name: "Spyro",
     slug: "spyro",
     ownership: "non-sony",
@@ -583,7 +622,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Mass-retail licensed plush and apparel already exist."],
   }),
   compact({
-    rank: 39,
+    rank: 40,
     name: "Until Dawn",
     slug: "until-dawn",
     ownership: "playstation-led",
@@ -602,7 +641,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     confidence: CONFIDENCE_PRESETS.recentRelease,
   }),
   compact({
-    rank: 40,
+    rank: 41,
     name: "Journey",
     slug: "journey",
     ownership: "sony-partner",
@@ -620,7 +659,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 5,
   }),
   compact({
-    rank: 41,
+    rank: 42,
     name: "PaRappa the Rapper",
     slug: "parappa-the-rapper",
     ownership: "legacy",
@@ -641,7 +680,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     ],
   }),
   compact({
-    rank: 42,
+    rank: 43,
     name: "SOCOM",
     slug: "socom",
     ownership: "legacy",
@@ -660,7 +699,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2025-05-15",
   }),
   compact({
-    rank: 43,
+    rank: 44,
     name: "Patapon",
     slug: "patapon",
     ownership: "legacy",
@@ -678,7 +717,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 44,
+    rank: 45,
     name: "Killzone",
     slug: "killzone",
     ownership: "legacy",
@@ -696,7 +735,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 45,
+    rank: 46,
     name: "Resistance",
     slug: "resistance",
     ownership: "legacy",
@@ -715,7 +754,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2025-05-15",
   }),
   compact({
-    rank: 46,
+    rank: 47,
     name: "MotorStorm",
     slug: "motorstorm",
     ownership: "legacy",
@@ -733,7 +772,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 47,
+    rank: 48,
     name: "MediEvil",
     slug: "medievil",
     ownership: "legacy",
@@ -752,7 +791,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     catalystIds: ["q4-gifting"],
   }),
   compact({
-    rank: 48,
+    rank: 49,
     name: "Gravity Rush",
     slug: "gravity-rush",
     ownership: "legacy",
@@ -770,7 +809,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 49,
+    rank: 50,
     name: "Shadow of the Colossus / Ico / The Last Guardian",
     slug: "shadow-of-the-colossus-ico-tlg",
     ownership: "legacy",
@@ -788,7 +827,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 5,
   }),
   compact({
-    rank: 50,
+    rank: 51,
     name: "Everybody's Golf",
     slug: "everybodys-golf",
     ownership: "legacy",

@@ -5,7 +5,7 @@ import type { FreshnessStatus } from "@/lib/types";
  * date) rather than the wall clock, so server and client render the same
  * result and the dataset stays deterministic.
  */
-export const RESEARCH_AS_OF = "2026-07-10";
+export const RESEARCH_AS_OF = "2026-07-16";
 
 export interface FreshnessThresholds {
   /** Days after which an item should be reviewed. */

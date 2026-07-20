@@ -287,7 +287,7 @@ export function RankingsView({ franchises }: { franchises: Franchise[] }) {
               aria-pressed={filter.top === top}
               onClick={() => setParams({ top })}
             >
-              {top === "all" ? "All 50" : `Top ${top}`}
+              {top === "all" ? `All ${franchises.length}` : `Top ${top}`}
             </Button>
           ))}
         </div>

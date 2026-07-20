@@ -2,7 +2,7 @@
 
 **Find the fandoms worth building for.**
 
-LootSignal is an internal decision-intelligence platform that ranks 50 video-game
+LootSignal is an internal decision-intelligence platform that ranks 51 video-game
 franchises (Sony/PlayStation IP plus five non-Sony benchmarks) by likely
 physical-merchandise profitability for a small-to-midsized ecommerce company.
 It is a ranking + evidence + forecast tool — not a gaming news site, storefront,
@@ -59,7 +59,7 @@ npm run e2e        # Playwright E2E (see Testing below)
 | Route | Purpose |
 |---|---|
 | `/` | Executive dashboard: KPIs, top-3 podium, top-10 chart, opportunity-vs-friction quadrant, signal cards, category heatmap, first-wave allocation |
-| `/rankings` | Filterable/sortable table of all 50 franchises, CSV export, watchlist, compare selection |
+| `/rankings` | Filterable/sortable table of all 51 franchises, CSV export, watchlist, compare selection |
 | `/franchises/[slug]` | Full dossier: assessment, radar + table, contribution waterfall, evidence cards, merch strategy, product matrix, licensing, competitive landscape, forecast, sources drawer |
 | `/compare` | Up to 4 franchises side by side with a deterministic template-generated summary (no AI API) |
 | `/forecast` | Forecast Lab: weight sliders, scenario controls, presets, instant re-ranking, JSON export/import |
@@ -72,10 +72,10 @@ npm run e2e        # Playwright E2E (see Testing below)
 Seed data lives in typed files under `src/data/` — never inside page components:
 
 ```
-src/data/franchises.ts        # assembly + Zod validation of all 50 records
+src/data/franchises.ts        # assembly + Zod validation of all 51 records
 src/data/franchises/top10.ts  # ranks 1–10, analyst-authored detail
 src/data/franchises/benchmarks5.ts  # the 5 non-Sony benchmarks
-src/data/franchises/catalog.ts      # ranks 11–50 (compact seeds)
+src/data/franchises/catalog.ts      # ranks 11+ (compact seeds, incl. Saros)
 src/data/franchises/build.ts        # deterministic seed → Franchise builder
 src/data/sources.ts           # research source registry
 src/data/productCategories.ts # the 14 merchandise categories
@@ -98,7 +98,7 @@ Full prose lives at `/methodology`; the executable versions are in `src/lib`.
 - **Overall score** = weighted 8-criterion sum × 10 (weights: brand 22%,
   momentum 18%, fandom 15%, visual 15%, licensing 12%, demographic 8%,
   pricing 5%, whitespace 5%). Unit tests reproduce all top-10 seed scores
-  within ±0.1, and a Zod refinement enforces it for all 50 records.
+  within ±0.1, and a Zod refinement enforces it for all 51 records.
 - **Two outputs:** the **Raw Demand Score** excludes licensing feasibility and
   whitespace and reweights the rest (modeled view); the **Actionability
   Score** is the full weighted model and is the primary ranking axis — which
@@ -115,8 +115,23 @@ Full prose lives at `/methodology`; the executable versions are in `src/lib`.
   Tier 3 community/retail proxies · Modeled internal calculation — visually
   distinguished everywhere via the tier badges.
 - **Freshness:** Current (≤180 days) · Review soon (≤365) · Stale (>365) ·
-  Unknown, measured against the research as-of date (2026-07-10), not the
+  Unknown, measured against the research as-of date (2026-07-16), not the
   wall clock, so rendering stays deterministic.
+
+### July 2026 research update
+
+A web-research pass on 2026-07-16 incorporated releases since the original
+snapshot: **Ghost of Yōtei** (Oct 2025; 3.3M+ first-month units per Sony's
+FY25 Q2 earnings, plus the Legends co-op mode) now backs Ghost of Tsushima's
+momentum as observed evidence; **Death Stranding 2: On the Beach** (June 2025,
+PC planned 2026) replaced Death Stranding's unconfirmed catalyst; **Helldivers
+2** gained its Xbox launch (Aug 2025) and the reported ~20M-copies milestone
+(tier-2, flagged as reported); and **Saros** (Housemarque's new Sony IP,
+released April 30, 2026) was added as franchise #51 at rank 30 with modeled
+criterion scores and Medium confidence. The original seed top-50's relative
+order is preserved exactly; unit tests enforce it. **Marvel's Wolverine**
+(confirmed for Sept 15, 2026) is deliberately excluded until release — as
+Marvel IP it would inherit Spider-Man's licensing profile.
 
 ## Documented assumptions
 
