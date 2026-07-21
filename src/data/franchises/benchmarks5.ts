@@ -54,6 +54,11 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
         "Halloween-season mass-retail licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "First 4 Figures", products: "Premium Resident Evil statues (dedicated license line)", status: "observed" },
+      { name: "Hot Toys", products: "1/6-scale character figures", status: "reported" },
+      { name: "NECA / mass-retail figure makers", products: "Action figures at retail", status: "reported" },
+    ],
     competitiveLandscape: [
       "Deep licensed catalog across apparel, jackets, bags, pins, posters, drinkware, and collectibles.",
       "Anniversary programs (e.g. RE 30th) periodically refresh official product waves.",
@@ -164,6 +169,10 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
         "Music/vinyl and artbook licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Square Enix (in-house)", products: "Play Arts Kai and Static Arts figure lines via the official store", status: "reported" },
+      { name: "Fine-jewelry partners (U-Treasure-style)", products: "Licensed FFVII jewelry", status: "reported" },
+    ],
     competitiveLandscape: [
       "Official store covers collectibles, jewelry, posters, vinyl, books, apparel, and faction accessories.",
       "Deep aftermarket and import channels serve collectors already.",
@@ -276,6 +285,10 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
         "Figure manufacturers (Good Smile-style partners)",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Bandai (Figuarts Mini)", products: "Persona chibi figure line", status: "observed" },
+      { name: "Good Smile Company", products: "figma and Nendoroid Persona figures", status: "reported" },
+    ],
     competitiveLandscape: [
       "Publisher-run merch programs plus import/specialty channels serve the core fandom.",
       "School-uniform and phantom-thief aesthetics attract unlicensed lookalikes.",
@@ -376,6 +389,11 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
         "Jewelry licensees (TorchTorch-style)",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Bandai (Figuarts Mini)", products: "Elden Ring chibi figure line", status: "observed" },
+      { name: "Pure Arts", products: "Premium Elden Ring statues", status: "reported" },
+      { name: "Max Factory", products: "figma Elden Ring figures", status: "reported" },
+    ],
     competitiveLandscape: [
       "Official merch ecosystem is established across most categories.",
       "Premium statue and replica market is competitive and capital-intensive.",
@@ -476,6 +494,10 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
         "Tactical-apparel and patch licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Kaiyodo (Revoltech)", products: "Metal Gear action figures (e.g. Revoltech Raiden)", status: "observed" },
+      { name: "Max Factory / Good Smile", products: "figma Metal Gear figures", status: "reported" },
+    ],
     competitiveLandscape: [
       "Periodic official drops and premium collectibles serve the fandom.",
       "Generic military-tactical product crowds the aesthetic without the IP hook.",

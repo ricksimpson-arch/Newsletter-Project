@@ -168,6 +168,13 @@ export const franchiseSchema = z
       additionalStakeholders: z.array(z.string().min(1)),
       competingLicensees: z.array(z.string().min(1)).min(1),
     }),
+    collectibleSuppliers: z.array(
+      z.object({
+        name: z.string().min(1),
+        products: z.string().min(1),
+        status: z.enum(["observed", "reported"]),
+      })
+    ),
     requiresLicenseWarning: z.boolean(),
     competitiveLandscape: z.array(z.string().min(1)).min(1),
     whitespaceOpportunities: z.array(z.string().min(1)).min(1),

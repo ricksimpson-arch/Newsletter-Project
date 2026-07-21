@@ -147,6 +147,15 @@ export interface RightsProfile {
   competingLicensees: string[];
 }
 
+/** A named manufacturer holding (or having held) a collectible line. */
+export interface CollectibleSupplier {
+  name: string;
+  /** What they make for this franchise. */
+  products: string;
+  /** observed = product line verified in the 2026-07 supplier scan; reported = widely documented but not re-verified. */
+  status: "observed" | "reported";
+}
+
 export interface BenchmarkAssessment {
   audienceScale: string;
   collectorBehavior: string;
@@ -189,6 +198,7 @@ export interface Franchise {
   licensingComplexity: number;
   licensingNotes: string[];
   rightsProfile: RightsProfile;
+  collectibleSuppliers: CollectibleSupplier[];
   requiresLicenseWarning: boolean;
   competitiveLandscape: string[];
   whitespaceOpportunities: string[];

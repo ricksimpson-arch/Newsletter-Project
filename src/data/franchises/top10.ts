@@ -54,6 +54,10 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Mass-retail apparel licensees chasing slogan graphics",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Youtooz", products: "Official vinyl figure line (Helldiver variants, Bile Titan, Hulk Scorcher) and plush", status: "observed" },
+      { name: "Fangamer", products: "Pins, patches, desk goods, apparel", status: "observed" },
+    ],
     competitiveLandscape: [
       "Official program launched March 2024 across PlayStation Gear and select retailers.",
       "Specialty retailers (e.g. Fangamer) carry apparel, patches, pins, and desk goods.",
@@ -240,6 +244,13 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Mass-retail apparel programs",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Gaming Heads", products: "1/4-scale Kratos statues and busts (dedicated GoW license page)", status: "observed" },
+      { name: "Prime 1 Studio", products: "Premium God of War statues", status: "observed" },
+      { name: "Mondo", products: "1/6-scale Kratos deluxe collectible figure", status: "observed" },
+      { name: "Dark Horse", products: "Art books and collectibles", status: "observed" },
+      { name: "Funko / NECA / Iron Studios", products: "Pop! vinyls and action figures", status: "reported" },
+    ],
     competitiveLandscape: [
       "Official PlayStation merchandise page spans apparel, mugs, pins, books, and plush.",
       "Multiple established licensees serve the franchise; mass retail presence exists.",
@@ -372,6 +383,12 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Premium art-print and poster licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Good Smile Company", products: "figma Jin Sakai action figure (fabric cape, swappable faceplates)", status: "observed" },
+      { name: "Prime 1 Studio", products: "1/4-scale Jin Sakai statue (~$1,199+)", status: "observed" },
+      { name: "Spin Master", products: "PlayStation Shapes Collection 6-inch Jin Sakai figure (mass retail)", status: "observed" },
+      { name: "Funko", products: "Jin Sakai Pop! vinyl variants", status: "observed" },
+    ],
     competitiveLandscape: [
       "Specialty retail (Fangamer) covers apparel and gifts; range is modest versus God of War.",
       "Generic samurai-aesthetic products compete on marketplaces without the IP hook.",
@@ -526,6 +543,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Toy & plush manufacturers seeking the family/gifting slot",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Fangamer / Jinx", products: "Official 7.5-inch articulated ASTRO plush", status: "observed" },
+      { name: "Good Smile Company", products: "ASTRO BOT blind-bag plushie line (cameo characters)", status: "observed" },
+      { name: "Youtooz", products: "9-inch Captain Astro plush", status: "observed" },
+    ],
     competitiveLandscape: [
       "Official merch exists (plush, pins, vinyl, apparel, accessories) but the range is thin.",
       "Little third-party presence; the gifting niche is largely unserved.",
@@ -642,6 +664,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Jewelry and accessory licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "PureArts", products: "1/6-scale Aloy statue (2,000-unit limited run, ~$399)", status: "observed" },
+      { name: "Dark Horse Direct", products: "1/6-scale Aloy statue", status: "observed" },
+      { name: "Sony (first-party)", products: "Collector's-edition Tremortusk & Aloy statues", status: "observed" },
+    ],
     competitiveLandscape: [
       "Official PlayStation Horizon merchandise page covers apparel and collectibles.",
       "Premium statue makers serve the high end; mid-market flat goods are thinner.",
@@ -777,6 +804,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "TV-merchandise licensees on HBO's side of the fence",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Dark Horse Direct", products: "Official statue line (Joel & Ellie), vinyl Clicker figures, art books", status: "observed" },
+      { name: "Mondo", products: "Vinyl soundtrack box sets and limited posters", status: "observed" },
+      { name: "Insert Coin Clothing", products: "Licensed apparel (Fireflies line)", status: "observed" },
+    ],
     competitiveLandscape: [
       "Official program spans apparel, drinkware, collectibles, guitars, pins, plush, posters, and music.",
       "TV merchandise runs on separate channels; boundaries must be respected.",
@@ -925,6 +957,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Fast-fashion chains with standing Marvel deals",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Hasbro", products: "Marvel Legends Gamerverse figure waves (game-suit Spider-Men, Venom, Black Cat)", status: "observed" },
+      { name: "Hot Toys", products: "1/6-scale game-version Spider-Man and Miles Morales figures", status: "observed" },
+      { name: "Funko", products: "Game-suit Pop! vinyls", status: "reported" },
+    ],
     requiresLicenseWarning: true,
     competitiveLandscape: [
       "One of the most saturated character-merch markets in existence, across all price points.",
@@ -1056,6 +1093,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "PlayStation Gear program licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Hot Wheels (Mattel)", products: "Official GT die-cast line developed with Polyphony Digital (1:64 premium series)", status: "observed" },
+      { name: "GT Spirit", products: "Premium 1:18 resin models of GT vehicles", status: "reported" },
+      { name: "TrueScale Miniatures / MINI GT", products: "Vision GT scale replicas", status: "reported" },
+    ],
     competitiveLandscape: [
       "Official collaborations (apparel, hats, socks, gloves, hoodies, racing accessories) prove demand.",
       "General motorsport apparel is a crowded adjacent market.",
@@ -1175,6 +1217,11 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Fashion and streetwear collaboration partners",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Max Factory (Good Smile)", products: "figma Sam Porter Bridges and Ludens figures; Nendoroid Jumbo Ludens", status: "observed" },
+      { name: "Prime 1 Studio", products: "Death Stranding premium statue series", status: "observed" },
+      { name: "Kojima Productions (in-house)", products: "Figures, statues, jewelry via the official store", status: "observed" },
+    ],
     competitiveLandscape: [
       "Official store spans tees, hoodies, headwear, phone cases, keychains, patches, stickers, bags, pins, figures, statues, jewelry, and art.",
       "Little third-party presence; the aesthetic deters casual knockoffs.",
@@ -1310,6 +1357,12 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         "Dark-apparel and gothic-accessory licensees",
       ],
     },
+    collectibleSuppliers: [
+      { name: "Max Factory (Good Smile)", products: "figma Hunter (The Old Hunters) with weapon set", status: "observed" },
+      { name: "Prime 1 Studio", products: "Premium statues (The Doll)", status: "observed" },
+      { name: "Gecco", products: "The Doll & Hunter statue set", status: "observed" },
+      { name: "Fangamer", products: "Plush, pins, apparel", status: "observed" },
+    ],
     competitiveLandscape: [
       "Licensed merch persists across apparel, jackets, books, pins, plush, and home goods.",
       "Generic gothic/horror product crowds adjacent aesthetics without the IP hook.",

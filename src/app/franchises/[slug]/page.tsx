@@ -476,6 +476,31 @@ export default async function FranchisePage({
               source registry; the rest are research estimates.
             </p>
           </div>
+          <div className="mt-3 rounded-lg border p-4">
+            <h3 className="text-sm font-medium">Known collectible suppliers</h3>
+            {franchise.collectibleSuppliers.length === 0 ? (
+              <p className="mt-2 text-sm text-muted-foreground">
+                No licensed collectible line observed in the July 2026 supplier scan
+                {franchise.rank <= 10 || franchise.isBenchmark
+                  ? "."
+                  : " — this franchise has not yet had a dedicated supplier pass; see the research method in the README."}
+              </p>
+            ) : (
+              <ul className="mt-2 space-y-2 text-sm">
+                {franchise.collectibleSuppliers.map((supplier) => (
+                  <li key={supplier.name} className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="font-medium">{supplier.name}</span>
+                    <ModeledBadge isModeled={supplier.status === "reported"} />
+                    <span className="w-full text-muted-foreground">{supplier.products}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+            <p className="mt-3 text-xs text-muted-foreground">
+              Supplier scan of manufacturer and retail listings, July 2026. “Observed” = product
+              line verified in the scan; “Modeled” = widely documented but not re-verified.
+            </p>
+          </div>
         </div>
         <div>
           <h2 className="text-lg font-semibold">Competitive landscape</h2>

@@ -168,6 +168,18 @@ describe("seed dataset", () => {
     expect(spiderMan.rightsProfile.parentCompany).toContain("Disney");
   });
 
+  it("gives every top-10 and benchmark franchise researched collectible suppliers", () => {
+    const covered = franchises.filter((f) => f.rank <= 10 || f.isBenchmark);
+    for (const franchise of covered) {
+      expect(
+        franchise.collectibleSuppliers.length,
+        `${franchise.slug} should have suppliers from the July 2026 scan`
+      ).toBeGreaterThan(0);
+    }
+    const helldivers = franchiseBySlug.get("helldivers-2")!;
+    expect(helldivers.collectibleSuppliers.map((s) => s.name)).toContain("Youtooz");
+  });
+
   it("ships no bundled imagery (image fields are null until licensed art is added)", () => {
     for (const franchise of franchises) {
       expect(franchise.heroImage ?? null).toBeNull();

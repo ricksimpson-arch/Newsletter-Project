@@ -8,6 +8,7 @@ import {
 } from "@/lib/scoring";
 import type {
   AudienceType,
+  CollectibleSupplier,
   ConfidenceComponents,
   CriterionScores,
   EvidenceMetric,
@@ -50,6 +51,8 @@ export interface FranchiseSeed {
   licensingNotes: string[];
   /** Overrides merged over the ownership-based default rights profile. */
   rights?: Partial<RightsProfile>;
+  /** Named collectible manufacturers from the 2026-07 supplier scan. */
+  collectibleSuppliers?: CollectibleSupplier[];
   requiresLicenseWarning?: boolean;
   competitiveLandscape: string[];
   whitespaceOpportunities: string[];
@@ -269,6 +272,7 @@ export function buildFranchise(seed: FranchiseSeed): Franchise {
     licensingComplexity: seed.licensingComplexity,
     licensingNotes: seed.licensingNotes,
     rightsProfile: { ...defaultRightsProfile(seed), ...seed.rights },
+    collectibleSuppliers: seed.collectibleSuppliers ?? [],
     requiresLicenseWarning: seed.requiresLicenseWarning ?? seed.licensingComplexity >= 7,
     competitiveLandscape: seed.competitiveLandscape,
     whitespaceOpportunities: seed.whitespaceOpportunities,
