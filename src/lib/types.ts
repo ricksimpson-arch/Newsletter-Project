@@ -130,6 +130,23 @@ export interface MerchandiseStrategy {
   premiumVsVolume: string;
 }
 
+/**
+ * Who owns the IP and who an ecommerce team would bid against for a
+ * merchandise license. Ownership is public record; competing-licensee
+ * lists are observed where sourced and research estimates otherwise.
+ */
+export interface RightsProfile {
+  /** Legal owner of the franchise IP. */
+  rightsHolder: string;
+  parentCompany?: string;
+  /** The practical route to a merchandise license. */
+  licensingVia: string;
+  /** Extra parties whose approval a license would also need. */
+  additionalStakeholders: string[];
+  /** Existing licensees / programs competing for the same license space. */
+  competingLicensees: string[];
+}
+
 export interface BenchmarkAssessment {
   audienceScale: string;
   collectorBehavior: string;
@@ -171,6 +188,7 @@ export interface Franchise {
   /** 1–10; 10 = hardest licensing path. */
   licensingComplexity: number;
   licensingNotes: string[];
+  rightsProfile: RightsProfile;
   requiresLicenseWarning: boolean;
   competitiveLandscape: string[];
   whitespaceOpportunities: string[];

@@ -43,6 +43,17 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
       "Capcom licensing runs through established programs with existing licensees in most categories.",
       "Character and creature likenesses are actively managed; approvals are demanding for newcomers.",
     ],
+    rights: {
+      rightsHolder: "Capcom Co., Ltd.",
+      parentCompany: undefined,
+      licensingVia: "Capcom consumer-products licensing",
+      competingLicensees: [
+        "Capcom's own official store and merchandising arm",
+        "Numskull-style accessory and apparel licensees",
+        "Premium collectible makers (Hot Toys / First 4 Figures-style)",
+        "Halloween-season mass-retail licensees",
+      ],
+    },
     competitiveLandscape: [
       "Deep licensed catalog across apparel, jackets, bags, pins, posters, drinkware, and collectibles.",
       "Anniversary programs (e.g. RE 30th) periodically refresh official product waves.",
@@ -143,6 +154,16 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
       "Square Enix operates extensive first-party merchandising with demanding approval standards.",
       "Character likenesses and faction marks are tightly managed.",
     ],
+    rights: {
+      rightsHolder: "Square Enix Holdings",
+      parentCompany: undefined,
+      licensingVia: "Square Enix merchandise licensing",
+      competingLicensees: [
+        "Square Enix's own merchandising operation (official store, Play Arts Kai figures)",
+        "Fine-jewelry collaboration partners",
+        "Music/vinyl and artbook licensees",
+      ],
+    },
     competitiveLandscape: [
       "Official store covers collectibles, jewelry, posters, vinyl, books, apparel, and faction accessories.",
       "Deep aftermarket and import channels serve collectors already.",
@@ -245,6 +266,16 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
       "ATLUS/SEGA licensing with active first-party merchandising, including anniversary programs.",
       "Character designs are closely managed; UI-style graphics may be easier to clear than portraits.",
     ],
+    rights: {
+      rightsHolder: "ATLUS (SEGA)",
+      parentCompany: "SEGA Sammy Holdings",
+      licensingVia: "ATLUS/SEGA licensing",
+      competingLicensees: [
+        "ATLUS's own merch program and anniversary drops",
+        "Anime-merchandise licensees (Cospa-style apparel makers)",
+        "Figure manufacturers (Good Smile-style partners)",
+      ],
+    },
     competitiveLandscape: [
       "Publisher-run merch programs plus import/specialty channels serve the core fandom.",
       "School-uniform and phantom-thief aesthetics attract unlicensed lookalikes.",
@@ -335,6 +366,16 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
       "Bandai Namco licensing with FromSoftware creative oversight; approvals span both.",
       "Existing licensees cover plush, jackets, vinyl, statues, and premium collectibles.",
     ],
+    rights: {
+      rightsHolder: "FromSoftware / Bandai Namco Entertainment (co-held)",
+      parentCompany: "Kadokawa (FromSoftware) · Bandai Namco Holdings",
+      licensingVia: "Bandai Namco licensing with FromSoftware creative approval",
+      competingLicensees: [
+        "Bandai Namco's own store and licensee network (plush, jackets, vinyl, statues — observed)",
+        "Premium statue makers (Pure Arts-style)",
+        "Jewelry licensees (TorchTorch-style)",
+      ],
+    },
     competitiveLandscape: [
       "Official merch ecosystem is established across most categories.",
       "Premium statue and replica market is competitive and capital-intensive.",
@@ -425,6 +466,16 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
       "Konami licensing; legacy-franchise approvals can be slow and conservative.",
       "FOX/FOXHOUND-style insignia are the strongest and most protectable marks.",
     ],
+    rights: {
+      rightsHolder: "Konami Digital Entertainment",
+      parentCompany: "Konami Group Corporation",
+      licensingVia: "Konami licensing",
+      competingLicensees: [
+        "Konami's official merchandise drops",
+        "Japanese figure manufacturers",
+        "Tactical-apparel and patch licensees",
+      ],
+    },
     competitiveLandscape: [
       "Periodic official drops and premium collectibles serve the fandom.",
       "Generic military-tactical product crowds the aesthetic without the IP hook.",

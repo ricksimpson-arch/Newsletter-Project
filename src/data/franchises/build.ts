@@ -17,6 +17,7 @@ import type {
   MerchandiseCategoryAssessment,
   MerchandiseStrategy,
   OwnershipType,
+  RightsProfile,
 } from "@/lib/types";
 import { BASE_FORECAST_ASSUMPTIONS } from "@/data/forecastAssumptions";
 import { productCategories } from "@/data/productCategories";
@@ -47,6 +48,8 @@ export interface FranchiseSeed {
   suggestedPriceBands?: Record<string, string>;
   licensingComplexity: number;
   licensingNotes: string[];
+  /** Overrides merged over the ownership-based default rights profile. */
+  rights?: Partial<RightsProfile>;
   requiresLicenseWarning?: boolean;
   competitiveLandscape: string[];
   whitespaceOpportunities: string[];
@@ -88,6 +91,29 @@ function defaultFlags(seed: FranchiseSeed, catalystIds: string[]): ForecastRiskF
     volatileEngagement: seed.criterionScores.momentum >= 8.7,
     staleDisclosures:
       seed.ownershipType === "legacy" || seed.confidenceComponents.sourceRecency < 45,
+  };
+}
+
+/**
+ * Default rights profile for Sony-family IP; non-Sony and partner seeds
+ * override the holder (and often the licensee list) per franchise.
+ * Competing-licensee entries are research estimates unless a registry
+ * source documents the program (e.g. Fangamer collections).
+ */
+function defaultRightsProfile(seed: FranchiseSeed): RightsProfile {
+  const sonyFamily = seed.ownershipType !== "non-sony";
+  return {
+    rightsHolder: sonyFamily ? "Sony Interactive Entertainment" : "See franchise override",
+    parentCompany: sonyFamily ? "Sony Group Corporation" : undefined,
+    licensingVia: sonyFamily
+      ? "PlayStation official licensing program"
+      : "Rights holder's licensing program",
+    additionalStakeholders: [],
+    competingLicensees: [
+      "PlayStation Gear program apparel & accessory licensees",
+      "Specialty game-merch retailers (e.g. Fangamer)",
+      "Premium collectible manufacturers (statues, figures)",
+    ],
   };
 }
 
@@ -242,6 +268,7 @@ export function buildFranchise(seed: FranchiseSeed): Franchise {
     suggestedPriceBands: seed.suggestedPriceBands ?? {},
     licensingComplexity: seed.licensingComplexity,
     licensingNotes: seed.licensingNotes,
+    rightsProfile: { ...defaultRightsProfile(seed), ...seed.rights },
     requiresLicenseWarning: seed.requiresLicenseWarning ?? seed.licensingComplexity >= 7,
     competitiveLandscape: seed.competitiveLandscape,
     whitespaceOpportunities: seed.whitespaceOpportunities,

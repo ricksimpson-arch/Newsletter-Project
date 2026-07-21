@@ -4,6 +4,7 @@ import type {
   ConfidenceComponents,
   CriterionScores,
   OwnershipType,
+  RightsProfile,
 } from "@/lib/types";
 
 /**
@@ -92,6 +93,7 @@ interface CompactSeedInput {
   licensingComplexity: number;
   landscape?: string[];
   licensingNotes?: string[];
+  rights?: Partial<RightsProfile>;
   confidence?: ConfidenceComponents;
   sourceIds?: string[];
   lastVerifiedAt?: string;
@@ -117,6 +119,7 @@ function compact(input: CompactSeedInput): FranchiseSeed {
     targetDemographics: DEMOGRAPHIC_DEFAULTS[input.audience],
     licensingComplexity: input.licensingComplexity,
     licensingNotes: input.licensingNotes ?? LICENSING_DEFAULTS[input.ownership],
+    rights: input.rights,
     competitiveLandscape: input.landscape ?? [
       "Limited official merchandise presence; competition comes mostly from generic aesthetic lookalikes.",
     ],
@@ -219,6 +222,17 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
       "Sony San Diego develops, but MLB, MLBPA, and team marks each carry separate rights.",
       "Game-brand-only designs reduce, not remove, the approval stack.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (game IP); MLB & MLBPA own league/player marks",
+      additionalStakeholders: [
+        "Major League Baseball (league and team marks)",
+        "MLB Players Association (player names and likenesses)",
+      ],
+      competingLicensees: [
+        "Fanatics and the league's mass sports-merchandise licensees",
+        "Team-shop apparel programs",
+      ],
+    },
     landscape: ["Sports merchandising is enormous and professionalized; team-mark products dominate."],
     confidence: CONFIDENCE_PRESETS.recentRelease,
   }),
@@ -260,6 +274,11 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 5,
     catalystIds: ["tv-adaptation-momentum"],
     confidence: CONFIDENCE_PRESETS.recentRelease,
+    rights: {
+      additionalStakeholders: [
+        "Sony Pictures Television (TV-adaptation imagery and cast likenesses)",
+      ],
+    },
   }),
   compact({
     rank: 22,
@@ -280,6 +299,15 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 7,
     sourceIds: ["capcom-sales-data", "lootsignal-internal-model"],
     landscape: ["Capcom merchandising plus deep Japanese-market licensee network."],
+    rights: {
+      rightsHolder: "Capcom Co., Ltd.",
+      parentCompany: undefined,
+      licensingVia: "Capcom consumer-products licensing",
+      competingLicensees: [
+        "Capcom's own store and Japanese-market licensee network",
+        "Figure manufacturers (Good Smile-style partners)",
+      ],
+    },
   }),
   compact({
     rank: 23,
@@ -299,6 +327,16 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     whitespace: ["Western merch presence minimal", "Fashion-capsule positioning"],
     licensingComplexity: 6,
     confidence: CONFIDENCE_PRESETS.recentRelease,
+    rights: {
+      rightsHolder: "Shift Up Corporation",
+      parentCompany: undefined,
+      licensingVia: "Shift Up licensing (SIE console-publishing relationship)",
+      additionalStakeholders: ["Sony Interactive Entertainment (console publishing)"],
+      competingLicensees: [
+        "Korean and Japanese figure/merch licensees",
+        "Fashion-apparel collaboration partners",
+      ],
+    },
   }),
   compact({
     rank: 24,
@@ -317,6 +355,15 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     themes: ["Neon signage", "Dragon tattoo linework", "Karaoke/street-food novelty"],
     whitespace: ["Novelty drinkware angle", "Neon-sign wall art"],
     licensingComplexity: 6,
+    rights: {
+      rightsHolder: "SEGA (Ryu Ga Gotoku Studio)",
+      parentCompany: "SEGA Sammy Holdings",
+      licensingVia: "SEGA licensing",
+      competingLicensees: [
+        "SEGA's own shop and Japan-market apparel licensees",
+        "Import/specialty retailers serving the western fandom",
+      ],
+    },
   }),
   compact({
     rank: 25,
@@ -340,6 +387,16 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
       "Do not proceed without a fully scoped multi-party license.",
     ],
     landscape: ["Disney merchandising machine plus Square Enix programs already serve fans."],
+    rights: {
+      rightsHolder: "The Walt Disney Company (characters & franchise) with Square Enix (development)",
+      parentCompany: "The Walt Disney Company",
+      licensingVia: "Disney consumer-products licensing plus Square Enix approvals",
+      additionalStakeholders: ["Square Enix (original-character and development-side approvals)"],
+      competingLicensees: [
+        "Disney's global licensing machine (jewelry, apparel, toys at every price point)",
+        "Square Enix's own store and figure lines",
+      ],
+    },
   }),
   compact({
     rank: 26,
@@ -378,6 +435,15 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 7,
     sourceIds: ["konami-digital-entertainment", "lootsignal-internal-model"],
     landscape: ["Horror apparel is a crowded category across licensed and generic product."],
+    rights: {
+      rightsHolder: "Konami Digital Entertainment",
+      parentCompany: "Konami Group Corporation",
+      licensingVia: "Konami licensing",
+      competingLicensees: [
+        "Konami's official merchandise drops",
+        "Horror-apparel licensees and Halloween mass retail",
+      ],
+    },
   }),
   compact({
     rank: 28,
@@ -396,6 +462,13 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     themes: ["Yokai masks", "Guardian-spirit linework", "Edo-gothic palettes"],
     whitespace: ["Yokai pin bestiary", "Dark samurai apparel"],
     licensingComplexity: 6,
+    rights: {
+      rightsHolder: "Koei Tecmo Games (Team Ninja)",
+      parentCompany: "Koei Tecmo Holdings",
+      licensingVia: "Koei Tecmo licensing (SIE console-publishing history)",
+      additionalStakeholders: ["Sony Interactive Entertainment (console publishing)"],
+      competingLicensees: ["Koei Tecmo's licensing partners and Japan-market merch makers"],
+    },
   }),
   compact({
     rank: 29,
@@ -473,6 +546,16 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 7,
     sourceIds: ["capcom-sales-data", "lootsignal-internal-model"],
     landscape: ["Decades of licensed apparel, arcade nostalgia goods, and collectibles worldwide."],
+    rights: {
+      rightsHolder: "Capcom Co., Ltd.",
+      parentCompany: undefined,
+      licensingVia: "Capcom consumer-products licensing",
+      competingLicensees: [
+        "Specialty licensees (iam8bit/Udon-style publishers and drops)",
+        "Mass-retail apparel programs",
+        "Arcade-nostalgia and toy licensees (Jada-style figure lines)",
+      ],
+    },
   }),
   compact({
     rank: 32,
@@ -492,6 +575,14 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     whitespace: ["Premium-nostalgia positioning above mass retail"],
     licensingComplexity: 7,
     landscape: ["Mass-retail licensed product already spans apparel, plush, and toys."],
+    rights: {
+      rightsHolder: "Activision Publishing",
+      parentCompany: "Microsoft Gaming",
+      licensingVia: "Activision/Microsoft consumer-products licensing",
+      competingLicensees: [
+        "Mass-retail toy, plush, and apparel licensees with standing Activision deals",
+      ],
+    },
   }),
   compact({
     rank: 33,
@@ -510,6 +601,15 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     themes: ["Devil-gene motifs", "Dojo typography", "Tournament-bracket graphics"],
     whitespace: ["Community-scene apparel", "Character-emblem pins"],
     licensingComplexity: 7,
+    rights: {
+      rightsHolder: "Bandai Namco Entertainment",
+      parentCompany: "Bandai Namco Holdings",
+      licensingVia: "Bandai Namco licensing",
+      competingLicensees: [
+        "Bandai Namco's own store and fight-game licensee network",
+        "Community/tournament apparel makers",
+      ],
+    },
   }),
   compact({
     rank: 34,
@@ -620,6 +720,14 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     whitespace: ["Premium-nostalgia plush above mass retail"],
     licensingComplexity: 7,
     landscape: ["Mass-retail licensed plush and apparel already exist."],
+    rights: {
+      rightsHolder: "Activision Publishing",
+      parentCompany: "Microsoft Gaming",
+      licensingVia: "Activision/Microsoft consumer-products licensing",
+      competingLicensees: [
+        "Mass-retail plush and toy licensees with standing Activision deals",
+      ],
+    },
   }),
   compact({
     rank: 40,
@@ -657,6 +765,12 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     themes: ["Dune gradients", "Glyph embroidery", "Scarf ribbons"],
     whitespace: ["Textile accessories (scarves)", "Meditative art prints"],
     licensingComplexity: 5,
+    rights: {
+      rightsHolder: "thatgamecompany (originally published by SIE)",
+      parentCompany: undefined,
+      licensingVia: "thatgamecompany partnerships",
+      competingLicensees: ["Indie-game merch specialists (iam8bit-style partners)"],
+    },
   }),
   compact({
     rank: 42,
@@ -678,6 +792,9 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingNotes: [
       "Sony legacy IP with original-artist design rights considerations (Rodney Greenblat artwork).",
     ],
+    rights: {
+      additionalStakeholders: ["Rodney Greenblat (original character artwork rights)"],
+    },
   }),
   compact({
     rank: 43,

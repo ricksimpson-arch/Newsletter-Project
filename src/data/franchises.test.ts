@@ -152,6 +152,22 @@ describe("seed dataset", () => {
     }
   });
 
+  it("gives every franchise a real rights holder and competing-licensee list", () => {
+    for (const franchise of franchises) {
+      expect(franchise.rightsProfile.rightsHolder, franchise.slug).not.toContain("override");
+      expect(franchise.rightsProfile.rightsHolder.length, franchise.slug).toBeGreaterThan(3);
+      expect(franchise.rightsProfile.competingLicensees.length, franchise.slug).toBeGreaterThan(0);
+      if (franchise.ownershipType === "non-sony") {
+        expect(franchise.rightsProfile.rightsHolder, franchise.slug).not.toContain(
+          "Sony Interactive"
+        );
+      }
+    }
+    const spiderMan = franchiseBySlug.get("marvels-spider-man")!;
+    expect(spiderMan.rightsProfile.rightsHolder).toContain("Marvel");
+    expect(spiderMan.rightsProfile.parentCompany).toContain("Disney");
+  });
+
   it("ships no bundled imagery (image fields are null until licensed art is added)", () => {
     for (const franchise of franchises) {
       expect(franchise.heroImage ?? null).toBeNull();

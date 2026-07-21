@@ -424,6 +424,58 @@ export default async function FranchisePage({
               ))}
             </ul>
           </div>
+          <div className="mt-3 rounded-lg border p-4">
+            <h3 className="text-sm font-medium">Rights ownership</h3>
+            <dl className="mt-2 space-y-2 text-sm">
+              <div>
+                <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  Rights holder
+                </dt>
+                <dd className="mt-0.5">
+                  {franchise.rightsProfile.rightsHolder}
+                  {franchise.rightsProfile.parentCompany && (
+                    <span className="text-muted-foreground">
+                      {" "}
+                      · {franchise.rightsProfile.parentCompany}
+                    </span>
+                  )}
+                </dd>
+              </div>
+              <div>
+                <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                  License route
+                </dt>
+                <dd className="mt-0.5">{franchise.rightsProfile.licensingVia}</dd>
+              </div>
+              {franchise.rightsProfile.additionalStakeholders.length > 0 && (
+                <div>
+                  <dt className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                    Additional stakeholders
+                  </dt>
+                  <dd className="mt-0.5">
+                    <ul className="list-disc space-y-1 pl-4">
+                      {franchise.rightsProfile.additionalStakeholders.map((s) => (
+                        <li key={s}>{s}</li>
+                      ))}
+                    </ul>
+                  </dd>
+                </div>
+              )}
+            </dl>
+          </div>
+          <div className="mt-3 rounded-lg border border-opportunity/40 bg-opportunity/5 p-4">
+            <h3 className="text-sm font-medium">Who you&apos;d bid against for a license</h3>
+            <ul className="mt-2 list-disc space-y-1.5 pl-4 text-sm">
+              {franchise.rightsProfile.competingLicensees.map((licensee) => (
+                <li key={licensee}>{licensee}</li>
+              ))}
+            </ul>
+            <p className="mt-3 text-xs text-muted-foreground">
+              IP is licensed, not bought outright — these are the existing licensees and programs
+              occupying the merchandise-license space. Entries marked “observed” come from the
+              source registry; the rest are research estimates.
+            </p>
+          </div>
         </div>
         <div>
           <h2 className="text-lg font-semibold">Competitive landscape</h2>

@@ -219,6 +219,16 @@ export function CompareView({ franchises }: { franchises: Franchise[] }) {
                     label="Licensing complexity"
                     cells={selection.map((f) => `${f.licensingComplexity}/10`)}
                   />
+                  <CompareRow
+                    label="Rights holder"
+                    cells={selection.map((f) => f.rightsProfile.rightsHolder)}
+                  />
+                  <CompareRow
+                    label="Key competing licensees"
+                    cells={selection.map((f) =>
+                      f.rightsProfile.competingLicensees.slice(0, 2).join(" · ")
+                    )}
+                  />
                   <CompareRow label="Audience" cells={selection.map((f) => f.audienceType.replace(/-/g, " "))} />
                   <CompareRow
                     label="Best categories"

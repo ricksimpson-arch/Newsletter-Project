@@ -161,6 +161,13 @@ export const franchiseSchema = z
     suggestedPriceBands: z.record(z.string(), z.string()),
     licensingComplexity: z.number().min(1).max(10),
     licensingNotes: z.array(z.string().min(1)).min(1),
+    rightsProfile: z.object({
+      rightsHolder: z.string().min(1),
+      parentCompany: z.string().optional(),
+      licensingVia: z.string().min(1),
+      additionalStakeholders: z.array(z.string().min(1)),
+      competingLicensees: z.array(z.string().min(1)).min(1),
+    }),
     requiresLicenseWarning: z.boolean(),
     competitiveLandscape: z.array(z.string().min(1)).min(1),
     whitespaceOpportunities: z.array(z.string().min(1)).min(1),

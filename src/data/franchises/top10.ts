@@ -46,6 +46,14 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "PlayStation-published title with an established official licensing program as the entry path.",
       "Official merchandise already exists (apparel, mugs, pins, desk mats, cape-inspired items), which proves the category but means approvals run through an active program.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (developed by Arrowhead Game Studios)",
+      competingLicensees: [
+        "PlayStation Gear program apparel & accessory licensees",
+        "Fangamer (active Helldivers 2 collection — observed)",
+        "Mass-retail apparel licensees chasing slogan graphics",
+      ],
+    },
     competitiveLandscape: [
       "Official program launched March 2024 across PlayStation Gear and select retailers.",
       "Specialty retailers (e.g. Fangamer) carry apparel, patches, pins, and desk goods.",
@@ -223,6 +231,15 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Sony-owned IP with a single rights holder; the PlayStation licensing program is the direct path.",
       "Existing licensees mean category exclusivities may constrain what a new licensee can make.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Santa Monica Studio)",
+      competingLicensees: [
+        "PlayStation Gear program apparel & drinkware licensees",
+        "Book/art-print licensees (Dark Horse-style publishing partners)",
+        "Premium statue & replica manufacturers",
+        "Mass-retail apparel programs",
+      ],
+    },
     competitiveLandscape: [
       "Official PlayStation merchandise page spans apparel, mugs, pins, books, and plush.",
       "Multiple established licensees serve the franchise; mass retail presence exists.",
@@ -347,6 +364,14 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Sony-owned single-studio IP; PlayStation licensing program is the direct path.",
       "Cultural-sensitivity review recommended for designs drawing on historical Japanese motifs.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Sucker Punch Productions)",
+      competingLicensees: [
+        "Fangamer (active Ghost of Tsushima collection — observed)",
+        "PlayStation Gear program licensees",
+        "Premium art-print and poster licensees",
+      ],
+    },
     competitiveLandscape: [
       "Specialty retail (Fangamer) covers apparel and gifts; range is modest versus God of War.",
       "Generic samurai-aesthetic products compete on marketplaces without the IP hook.",
@@ -493,6 +518,14 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Sony-owned mascot IP developed internally; single rights holder, friendly licensing profile.",
       "Children's products add safety-compliance requirements (CPSIA/EN71) to any license.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Team Asobi)",
+      competingLicensees: [
+        "Fangamer (active Astro Bot collection — observed)",
+        "PlayStation Gear program licensees",
+        "Toy & plush manufacturers seeking the family/gifting slot",
+      ],
+    },
     competitiveLandscape: [
       "Official merch exists (plush, pins, vinyl, apparel, accessories) but the range is thin.",
       "Little third-party presence; the gifting niche is largely unserved.",
@@ -601,6 +634,14 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Sony-owned IP (Guerrilla); PlayStation licensing program is the direct path.",
       "Official merchandise page exists — category exclusivities may apply.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Guerrilla)",
+      competingLicensees: [
+        "PlayStation Gear program licensees (official Horizon merch page — observed)",
+        "Premium statue manufacturers serving the machine-collectible high end",
+        "Jewelry and accessory licensees",
+      ],
+    },
     competitiveLandscape: [
       "Official PlayStation Horizon merchandise page covers apparel and collectibles.",
       "Premium statue makers serve the high end; mid-market flat goods are thinner.",
@@ -725,6 +766,17 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "TV-adaptation imagery and actor likenesses involve additional rights holders — avoid entirely.",
       "Music-adjacent products (guitars) trip further rights; official partners already serve them.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Naughty Dog)",
+      additionalStakeholders: [
+        "HBO / PlayStation Productions (TV-adaptation imagery and cast likenesses)",
+      ],
+      competingLicensees: [
+        "PlayStation Gear program licensees (official TLOU merch program — observed)",
+        "Collectible and poster/vinyl licensees (Dark Horse / Mondo-style partners)",
+        "TV-merchandise licensees on HBO's side of the fence",
+      ],
+    },
     competitiveLandscape: [
       "Official program spans apparel, drinkware, collectibles, guitars, pins, plush, posters, and music.",
       "TV merchandise runs on separate channels; boundaries must be respected.",
@@ -858,6 +910,21 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Label: Strategic pursuit only — do not proceed without a fully scoped multi-party license.",
       "General Spider-Man merchandise rights are separately and heavily licensed already.",
     ],
+    rights: {
+      rightsHolder: "Marvel Characters, Inc. (Spider-Man character IP)",
+      parentCompany: "The Walt Disney Company",
+      licensingVia: "Disney/Marvel consumer-products licensing",
+      additionalStakeholders: [
+        "Sony Interactive Entertainment & Insomniac Games (game-specific designs)",
+        "Actor likeness approvals for game-model-based art",
+      ],
+      competingLicensees: [
+        "The global Marvel licensing ecosystem: Funko, Hasbro, Jazwares-style toy makers",
+        "Fanatics-style mass apparel programs",
+        "Hot Toys and premium collectible manufacturers",
+        "Fast-fashion chains with standing Marvel deals",
+      ],
+    },
     requiresLicenseWarning: true,
     competitiveLandscape: [
       "One of the most saturated character-merch markets in existence, across all price points.",
@@ -977,6 +1044,18 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "GT brand itself is Sony-owned; the PlayStation licensing program is the entry path.",
       "Any design referencing real vehicle marques, liveries, or motorsport marks requires additional third-party rights — avoid.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (Polyphony Digital)",
+      additionalStakeholders: [
+        "Vehicle manufacturers (marques, liveries) for any real-car designs",
+        "Motorsport sanctioning bodies for event/series marks",
+      ],
+      competingLicensees: [
+        "Automotive-lifestyle collaboration partners (sportswear and apparel collabs — observed program)",
+        "Sim-racing hardware licensees",
+        "PlayStation Gear program licensees",
+      ],
+    },
     competitiveLandscape: [
       "Official collaborations (apparel, hats, socks, gloves, hoodies, racing accessories) prove demand.",
       "General motorsport apparel is a crowded adjacent market.",
@@ -1085,6 +1164,17 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "IP sits with Kojima Productions with Sony publishing history — multi-party coordination required.",
       "An active official store (Kojima Productions) sets a high design bar and covers many categories.",
     ],
+    rights: {
+      rightsHolder: "Kojima Productions",
+      parentCompany: undefined,
+      licensingVia: "Kojima Productions licensing/partnerships (SIE publishing relationship)",
+      additionalStakeholders: ["Sony Interactive Entertainment (publishing relationship)"],
+      competingLicensees: [
+        "Kojima Productions' own official store (observed — covers most categories)",
+        "Japanese figure manufacturers (Max Factory/figma-style partners)",
+        "Fashion and streetwear collaboration partners",
+      ],
+    },
     competitiveLandscape: [
       "Official store spans tees, hoodies, headwear, phone cases, keychains, patches, stickers, bags, pins, figures, statues, jewelry, and art.",
       "Little third-party presence; the aesthetic deters casual knockoffs.",
@@ -1211,6 +1301,15 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "Sony-owned IP developed with FromSoftware; PlayStation licensing program is the path.",
       "Persistent licensed merchandise (Fangamer and others) shows licensing is workable at boutique scale.",
     ],
+    rights: {
+      rightsHolder: "Sony Interactive Entertainment (developed with FromSoftware)",
+      additionalStakeholders: ["FromSoftware (creative approvals on the shared IP)"],
+      competingLicensees: [
+        "Fangamer (active Bloodborne collection — observed)",
+        "Premium statue and figure manufacturers",
+        "Dark-apparel and gothic-accessory licensees",
+      ],
+    },
     competitiveLandscape: [
       "Licensed merch persists across apparel, jackets, books, pins, plush, and home goods.",
       "Generic gothic/horror product crowds adjacent aesthetics without the IP hook.",
