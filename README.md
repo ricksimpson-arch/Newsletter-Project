@@ -2,7 +2,7 @@
 
 **Find the fandoms worth building for.**
 
-LootSignal is an internal decision-intelligence platform that ranks 51 video-game
+LootSignal is an internal decision-intelligence platform that ranks 52 video-game
 franchises (Sony/PlayStation IP plus five non-Sony benchmarks) by likely
 physical-merchandise profitability for a small-to-midsized ecommerce company.
 It is a ranking + evidence + forecast tool — not a gaming news site, storefront,
@@ -59,7 +59,7 @@ npm run e2e        # Playwright E2E (see Testing below)
 | Route | Purpose |
 |---|---|
 | `/` | Executive dashboard: KPIs, top-3 podium, top-10 chart, opportunity-vs-friction quadrant, signal cards, category heatmap, first-wave allocation |
-| `/rankings` | Filterable/sortable table of all 51 franchises, CSV export, watchlist, compare selection |
+| `/rankings` | Filterable/sortable table of all 52 franchises, CSV export, watchlist, compare selection |
 | `/franchises/[slug]` | Full dossier: assessment, radar + table, contribution waterfall, evidence cards, merch strategy, product matrix, licensing, competitive landscape, forecast, sources drawer |
 | `/compare` | Up to 4 franchises side by side with a deterministic template-generated summary (no AI API) |
 | `/forecast` | Forecast Lab: weight sliders, scenario controls, presets, instant re-ranking, JSON export/import |
@@ -72,7 +72,7 @@ npm run e2e        # Playwright E2E (see Testing below)
 Seed data lives in typed files under `src/data/` — never inside page components:
 
 ```
-src/data/franchises.ts        # assembly + Zod validation of all 51 records
+src/data/franchises.ts        # assembly + Zod validation of all 52 records
 src/data/franchises/top10.ts  # ranks 1–10, analyst-authored detail
 src/data/franchises/benchmarks5.ts  # the 5 non-Sony benchmarks
 src/data/franchises/catalog.ts      # ranks 11+ (compact seeds, incl. Saros)
@@ -98,7 +98,7 @@ Full prose lives at `/methodology`; the executable versions are in `src/lib`.
 - **Overall score** = weighted 8-criterion sum × 10 (weights: brand 22%,
   momentum 18%, fandom 15%, visual 15%, licensing 12%, demographic 8%,
   pricing 5%, whitespace 5%). Unit tests reproduce all top-10 seed scores
-  within ±0.1, and a Zod refinement enforces it for all 51 records.
+  within ±0.1, and a Zod refinement enforces it for all 52 records.
 - **Two outputs:** the **Raw Demand Score** excludes licensing feasibility and
   whitespace and reweights the rest (modeled view); the **Actionability
   Score** is the full weighted model and is the primary ranking axis — which
@@ -115,7 +115,7 @@ Full prose lives at `/methodology`; the executable versions are in `src/lib`.
   Tier 3 community/retail proxies · Modeled internal calculation — visually
   distinguished everywhere via the tier badges.
 - **Freshness:** Current (≤180 days) · Review soon (≤365) · Stale (>365) ·
-  Unknown, measured against the research as-of date (2026-07-16), not the
+  Unknown, measured against the research as-of date (2026-08-04), not the
   wall clock, so rendering stays deterministic.
 
 ### July 2026 research update
@@ -132,6 +132,27 @@ criterion scores and Medium confidence. The original seed top-50's relative
 order is preserved exactly; unit tests enforce it. **Marvel's Wolverine**
 (confirmed for Sept 15, 2026) is deliberately excluded until release — as
 Marvel IP it would inherit Spider-Man's licensing profile.
+
+### August 2026 research update
+
+A second pass on 2026-08-04 made the first score revisions since the seed
+snapshot, each documented in the data and enforced by tests:
+
+- **Ghost of Tsushima → #2 (85.0 → 85.9).** Momentum revised 8.3 → 8.8:
+  Ghost of Yōtei outsold Tsushima's launch window, the free **Legends** co-op
+  DLC shipped March 10, 2026, and a PC port is targeted for Q2 2026.
+- **Saros → rank 35 (68.0 → 67.0).** Momentum revised 7.6 → 7.0: Metacritic
+  88 and PlayStation's public praise, but a reported ~300K units in two weeks
+  against a reported $76M budget — the audience is smaller than the reception
+  suggested.
+- **High on Life added at rank 28 (69.4)** — the dataset's first fully
+  independent-studio IP. 7.5M+ unique players, **High on Life 2** released
+  Feb 13, 2026 (Switch 2 July 1), inherently toyetic characters, and an
+  approachable rights holder with no licensing program. A **Studio spotlight:
+  Squanch Games** section on `/benchmarks` covers the strategic angle.
+- Helldivers 2's ~20M milestone gained a July 2026 platform breakdown
+  (Steam ~13.1M / PS5 ~5.6M / Xbox ~1.6M, tier-2 analytics). Marvel's
+  Wolverine (Sept 15, 2026, pre-orders live) remains excluded until release.
 
 ## Documented assumptions
 

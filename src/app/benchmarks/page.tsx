@@ -155,6 +155,47 @@ export default function BenchmarksPage() {
         </p>
       </section>
 
+      <section aria-labelledby="squanch-spotlight">
+        <h2 id="squanch-spotlight" className="text-lg font-semibold">
+          Studio spotlight: Squanch Games
+        </h2>
+        <div className="mt-3 rounded-lg border border-opportunity/40 bg-opportunity/5 p-5">
+          <p className="text-sm leading-relaxed">
+            Squanch Games (founded 2016) is the counter-example to every big-publisher franchise on
+            this page: an <strong>independent studio that owns its IP outright</strong> and runs no
+            broad licensing program. <Link href="/franchises/high-on-life" className="text-primary underline-offset-4 hover:underline">High on Life</Link>{" "}
+            reached 7.5M+ unique players off the biggest third-party Game Pass launch ever, and{" "}
+            <strong>High on Life 2</strong> (February 13, 2026; Switch 2 July 1) has the franchise at
+            peak activity. Its earlier title <em>Trover Saves the Universe</em> shares the same
+            adult-animation design language.
+          </p>
+          <div className="mt-4 grid gap-4 text-sm md:grid-cols-3">
+            <div>
+              <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">Why it matters here</h3>
+              <p className="mt-1 text-muted-foreground">
+                Talking-gun characters and alien creatures are literally characters-as-products —
+                plush, vinyl, and novelty apparel fits that big-publisher IP rarely leaves open.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">The licensing angle</h3>
+              <p className="mt-1 text-muted-foreground">
+                One rights holder, no licensing bureaucracy, no incumbent licensee network — the
+                practical opposite of bidding against Disney or Capcom&apos;s programs.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-xs font-medium uppercase tracking-wide text-muted-foreground">The caveats</h3>
+              <p className="mt-1 text-muted-foreground">
+                Game Pass reach inflates player counts vs. paying fans, comedy ages fast, and the
+                brand carries baggage from its founder&apos;s 2023 departure. It enters at rank 28,
+                Test or Monitor.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section aria-labelledby="benchmark-detail">
         <h2 id="benchmark-detail" className="text-lg font-semibold">
           Benchmark assessments

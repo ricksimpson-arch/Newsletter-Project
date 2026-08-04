@@ -6,7 +6,7 @@ import { franchiseListSchema } from "@/lib/schemas";
 import type { Franchise } from "@/lib/types";
 
 /**
- * The full 50-franchise dataset, built deterministically from seed
+ * The full franchise dataset, built deterministically from seed
  * records and validated with Zod at module load. Invalid seed data
  * throws immediately — the app fails loudly rather than rendering
  * unverified numbers.

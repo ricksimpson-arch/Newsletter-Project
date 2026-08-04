@@ -58,7 +58,15 @@ const RAW_CATALYSTS: Catalyst[] = [
     type: "release",
     confirmed: true,
     expectedWindow: "Active — released October 2, 2025",
-    note: "Ghost of Yōtei passed 3.3M units in its first month (Sony FY25 Q2 earnings), outperforming Tsushima's same-period sales; the Legends co-op mode (announced Feb 2026) extends the window.",
+    note: "Ghost of Yōtei passed 3.3M units in its first month (Sony FY25 Q2 earnings), outperforming Tsushima's same-period sales; the Legends co-op DLC shipped March 10, 2026 and a PC version is targeted for Q2 2026.",
+  },
+  {
+    id: "hol2-release-momentum",
+    label: "High on Life 2 release momentum",
+    type: "release",
+    confirmed: true,
+    expectedWindow: "Active — released February 13, 2026; Switch 2 version July 1, 2026",
+    note: "Sequel launched day-one on Game Pass across PS5/Xbox/PC, with the Switch 2 port extending the window into H2 2026.",
   },
   {
     id: "ds2-release-momentum",

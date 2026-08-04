@@ -47,4 +47,10 @@ export const signalInsights: SignalInsight[] = [
     body: "Gran Turismo behaves like a car-culture brand: caps, jackets, and garage goods at higher AOV — positioned beside motorsport merch, not game tees.",
     tone: "favorable",
   },
+  {
+    slug: "high-on-life",
+    headline: "Characters that are already products",
+    body: "Squanch Games' talking guns and alien cast are inherently toyetic, High on Life 2 (Feb 2026) has the franchise at peak activity, and the indie rights holder has no broad licensing program — an approachable door into 7.5M+ players' wallets.",
+    tone: "opportunity",
+  },
 ];

@@ -445,8 +445,71 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
       ],
     },
   }),
+  {
+    ...compact({
+      rank: 28,
+      name: "High on Life",
+      slug: "high-on-life",
+      ownership: "non-sony",
+      audience: "teen-young-adult",
+      score: 69.4,
+      criteria: { brandRecognition: 5.2, momentum: 8.0, fandomEngagement: 6.6, visualSuitability: 8.8, licensingFeasibility: 6.0, demographicFit: 7.4, priceElasticity: 6.6, whitespace: 8.0 },
+      read: "Squanch Games' comedy IP; characters that are literally products",
+      summary:
+        "High on Life reached 7.5M+ unique players on the back of the biggest third-party Game Pass launch ever, and High on Life 2 (February 13, 2026, with a Switch 2 port July 1) has the franchise at peak activity. Its talking guns and alien cast are inherently toyetic, the adult-animation crossover audience buys novelty merch, and the whitespace is wide: an indie rights holder with no broad licensing program.",
+      opportunity: "Character plush, vinyl figures, and novelty apparel for the adult-animation crowd while the sequel window is hot.",
+      risk: "Game Pass reach may not convert to paid-merch demand at the same rate; comedic tone dates quickly, and the brand carries baggage from its founder's 2023 departure.",
+      best: ["plush", "tshirts", "pins-patches", "drinkware", "posters-prints"],
+      themes: ["Talking-gun character designs", "Alien-cartoon color palettes", "Fourth-wall-breaking one-liners"],
+      whitespace: ["No broad licensing program observed - approachable indie rights holder", "Character plush line barely exploited"],
+      licensingComplexity: 4,
+      landscape: [
+        "Squanch sells its own merch in modest volume; no established licensee network competes for the space.",
+      ],
+      confidence: CONFIDENCE_PRESETS.recentRelease,
+      sourceIds: ["squanch-hol2-launch", "xbox-wire-high-on-life", "vgchartz-hol-players", "lootsignal-internal-model"],
+      lastVerifiedAt: "2026-08-04",
+      catalystIds: ["hol2-release-momentum", "q4-gifting"],
+      rights: {
+        rightsHolder: "Squanch Games, Inc. (independent studio)",
+        parentCompany: undefined,
+        licensingVia: "Direct studio partnership - no formal licensing program observed",
+        competingLicensees: [
+          "Squanch Games' own web store",
+          "Adult-animation vinyl/plush makers (Youtooz-style) likely to bid for the space",
+        ],
+      },
+    }),
+    evidence: [
+      {
+        id: "hol-players",
+        label: "Unique players (High on Life)",
+        value: 7_500_000,
+        unit: "players",
+        asOfDate: "2023-08-01",
+        sourceIds: ["vgchartz-hol-players", "xbox-wire-high-on-life"],
+        sourceTier: "tier-2",
+        confidence: 75,
+        isModeled: false,
+        note: "Squanch-announced milestone; players do not equal unit sales - Game Pass drove much of the reach. Biggest third-party Game Pass launch ever per Xbox Wire.",
+      },
+      {
+        id: "hol2-release",
+        label: "High on Life 2 release",
+        value: "Released February 13, 2026 (PS5/Xbox/PC, day-one Game Pass) - Switch 2 July 1, 2026",
+        asOfDate: "2026-02-13",
+        sourceIds: ["squanch-hol2-launch"],
+        sourceTier: "tier-1",
+        confidence: 90,
+        isModeled: false,
+      },
+    ],
+    collectibleSuppliers: [
+      { name: "Squanch Games (in-house)", products: "Apparel and novelty items via the studio's own store", status: "reported" },
+    ],
+  },
   compact({
-    rank: 28,
+    rank: 29,
     name: "Nioh",
     slug: "nioh",
     ownership: "sony-partner",
@@ -471,7 +534,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     },
   }),
   compact({
-    rank: 29,
+    rank: 30,
     name: "Days Gone",
     slug: "days-gone",
     ownership: "sony-owned",
@@ -490,18 +553,19 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
   }),
   {
     ...compact({
-      rank: 30,
+      rank: 35,
       name: "Saros",
       slug: "saros",
       ownership: "sony-owned",
       audience: "collector-niche",
-      score: 68.0,
-      criteria: { brandRecognition: 4.6, momentum: 7.6, fandomEngagement: 5.6, visualSuitability: 8.6, licensingFeasibility: 8.4, demographicFit: 6.2, priceElasticity: 7.4, whitespace: 8.4 },
-      read: "Newest Sony IP (Apr 2026); striking art direction, unproven fandom",
+      score: 67.0,
+      // Momentum revised 7.6 -> 7.0 in the 2026-08 pass: acclaimed launch (Metacritic 88) but a reported ~300K first-two-weeks start.
+      criteria: { brandRecognition: 4.6, momentum: 7.0, fandomEngagement: 5.6, visualSuitability: 8.6, licensingFeasibility: 8.4, demographicFit: 6.2, priceElasticity: 7.4, whitespace: 8.4 },
+      read: "Acclaimed new Sony IP (Apr 2026); soft commercial start, whitespace intact",
       summary:
-        "Housemarque's Saros (released April 30, 2026, with a 91% OpenCritic recommendation rate) is Sony's newest first-party IP: a solar bullet-hell aesthetic with strong poster and pin potential. Merch demand is entirely unproven this early, so it enters as a test-and-monitor position with wide-open whitespace.",
+        "Housemarque's Saros (April 30, 2026) earned a Metacritic 88 and PlayStation's public praise, but analytics put its start at roughly 300K units in two weeks against a reported $76M budget. The solar bullet-hell aesthetic still has real poster and pin potential; the audience is simply smaller than the reception suggested, so it stays a cautious test position.",
       opportunity: "Art-led prints, pins, and premium apparel while the launch window keeps attention high and no licensed merch exists.",
-      risk: "Brand-new IP: no established fandom, no sales disclosures yet, and demand could fade after the launch window.",
+      risk: "Reported sales underperformed even Returnal's start; fandom size may not sustain a merch line beyond a boutique run.",
       best: ["posters-prints", "pins-patches", "tshirts", "desk-accessories", "premium-collectibles"],
       themes: ["Solar-eclipse motifs", "Bullet-hell particle patterns", "Enforcer-suit silhouettes"],
       whitespace: ["No licensed merch exists yet — first-mover window", "Sci-fi art-print market"],
@@ -510,8 +574,8 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
         "No official merchandise program observed at launch; whitespace is total but demand is unproven.",
       ],
       confidence: CONFIDENCE_PRESETS.recentRelease,
-      sourceIds: ["opencritic-saros", "wikipedia-saros", "ps-licensing-program", "lootsignal-internal-model"],
-      lastVerifiedAt: "2026-07-16",
+      sourceIds: ["opencritic-saros", "wikipedia-saros", "alinea-saros-sales", "ps-licensing-program", "lootsignal-internal-model"],
+      lastVerifiedAt: "2026-08-04",
     }),
     evidence: [
       {
@@ -524,6 +588,17 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
         confidence: 80,
         isModeled: false,
         note: "Delayed from March 20, 2026; developed by Sony-owned Housemarque.",
+      },
+      {
+        id: "saros-early-sales",
+        label: "Early sales (reported)",
+        value: "~300,000 units in first two weeks",
+        asOfDate: "2026-05-13",
+        sourceIds: ["alinea-saros-sales"],
+        sourceTier: "tier-2",
+        confidence: 60,
+        isModeled: false,
+        note: "Analytics estimate, not an official disclosure; PlayStation cited the Metacritic 88 in earnings commentary. Reported development budget ~$76M.",
       },
     ],
   },
@@ -630,7 +705,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 35,
+    rank: 36,
     name: "Sly Cooper",
     slug: "sly-cooper",
     ownership: "legacy",
@@ -648,7 +723,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 36,
+    rank: 37,
     name: "Ape Escape",
     slug: "ape-escape",
     ownership: "legacy",
@@ -667,7 +742,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     catalystIds: ["q4-gifting"],
   }),
   compact({
-    rank: 37,
+    rank: 38,
     name: "Returnal",
     slug: "returnal",
     ownership: "sony-owned",
@@ -685,7 +760,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 38,
+    rank: 39,
     name: "inFAMOUS",
     slug: "infamous",
     ownership: "legacy",
@@ -703,7 +778,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 39,
+    rank: 40,
     name: "Spyro",
     slug: "spyro",
     ownership: "non-sony",
@@ -730,7 +805,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     },
   }),
   compact({
-    rank: 40,
+    rank: 41,
     name: "Until Dawn",
     slug: "until-dawn",
     ownership: "playstation-led",
@@ -749,7 +824,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     confidence: CONFIDENCE_PRESETS.recentRelease,
   }),
   compact({
-    rank: 41,
+    rank: 42,
     name: "Journey",
     slug: "journey",
     ownership: "sony-partner",
@@ -773,7 +848,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     },
   }),
   compact({
-    rank: 42,
+    rank: 43,
     name: "PaRappa the Rapper",
     slug: "parappa-the-rapper",
     ownership: "legacy",
@@ -797,7 +872,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     },
   }),
   compact({
-    rank: 43,
+    rank: 44,
     name: "SOCOM",
     slug: "socom",
     ownership: "legacy",
@@ -816,7 +891,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2025-05-15",
   }),
   compact({
-    rank: 44,
+    rank: 45,
     name: "Patapon",
     slug: "patapon",
     ownership: "legacy",
@@ -834,7 +909,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 45,
+    rank: 46,
     name: "Killzone",
     slug: "killzone",
     ownership: "legacy",
@@ -852,7 +927,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 46,
+    rank: 47,
     name: "Resistance",
     slug: "resistance",
     ownership: "legacy",
@@ -871,7 +946,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2025-05-15",
   }),
   compact({
-    rank: 47,
+    rank: 48,
     name: "MotorStorm",
     slug: "motorstorm",
     ownership: "legacy",
@@ -889,7 +964,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 48,
+    rank: 49,
     name: "MediEvil",
     slug: "medievil",
     ownership: "legacy",
@@ -908,7 +983,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     catalystIds: ["q4-gifting"],
   }),
   compact({
-    rank: 49,
+    rank: 50,
     name: "Gravity Rush",
     slug: "gravity-rush",
     ownership: "legacy",
@@ -926,7 +1001,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 4,
   }),
   compact({
-    rank: 50,
+    rank: 51,
     name: "Shadow of the Colossus / Ico / The Last Guardian",
     slug: "shadow-of-the-colossus-ico-tlg",
     ownership: "legacy",
@@ -944,7 +1019,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 5,
   }),
   compact({
-    rank: 51,
+    rank: 52,
     name: "Everybody's Golf",
     slug: "everybodys-golf",
     ownership: "legacy",

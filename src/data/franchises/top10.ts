@@ -150,7 +150,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         sourceTier: "tier-2",
         confidence: 65,
         isModeled: false,
-        note: "Reported figure (~1.6M on Xbox), not an official Sony disclosure — treat as directional.",
+        note: "Reported figure corroborated July 2026 by Alinea Analytics platform breakdown (Steam ~13.1M, PS5 ~5.6M, Xbox ~1.6M); still not an official Sony disclosure.",
       },
     ],
     hasPublicSalesData: true,
@@ -197,7 +197,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2026-07-16",
   },
   {
-    rank: 2,
+    rank: 3,
     name: "God of War",
     slug: "god-of-war",
     ownershipType: "sony-owned",
@@ -337,15 +337,17 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     lastVerifiedAt: "2026-07-09",
   },
   {
-    rank: 3,
+    rank: 2,
     name: "Ghost of Tsushima",
     slug: "ghost-of-tsushima",
     ownershipType: "sony-owned",
     audienceType: "adult",
-    seedScore: 85.0,
+    seedScore: 85.9,
     criterionScores: {
       brandRecognition: 8.4,
-      momentum: 8.3,
+      // Revised 8.3 -> 8.8 in the 2026-08 research pass: Yotei outsold
+      // Tsushima's launch, Legends co-op shipped March 2026, PC port Q2 2026.
+      momentum: 8.8,
       fandomEngagement: 8.4,
       visualSuitability: 9.5,
       licensingFeasibility: 8.5,
@@ -356,7 +358,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     criterionProvenance: "research",
     commercialRead: "Prestige samurai aesthetic with elegant product language",
     executiveSummary:
-      "Ghost of Tsushima is the strongest design-led opportunity on the board: masks, fox motifs, clan symbols, and brushwork calligraphy form a restrained product language that supports premium minimalist apparel and gifts. The market is meaningfully less crowded than other top-tier Sony IP — and Ghost of Yōtei (Oct 2025, 3.3M+ units in its first month) has turned the franchise's momentum from assumption into fact.",
+      "Ghost of Tsushima is the strongest design-led opportunity on the board: masks, fox motifs, clan symbols, and brushwork calligraphy form a restrained product language that supports premium minimalist apparel and gifts. The market is meaningfully less crowded than other top-tier Sony IP — and Ghost of Yōtei (Oct 2025, 3.3M+ units in its first month) has turned the franchise's momentum from assumption into fact — the free Legends co-op mode (March 2026) and a Q2 2026 PC port keep the audience growing. Revised to #2 in the August 2026 research pass.",
     mainOpportunity:
       "A premium minimalist capsule — embroidered headwear, heavyweight tees, art prints, journals — that trades on elegance rather than logos.",
     mainRisk:
@@ -457,7 +459,18 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
         sourceTier: "tier-2",
         confidence: 85,
         isModeled: false,
-        note: "Sony FY25 Q2 earnings figure via press coverage; Sony stated it outperformed Tsushima over the same period. Legends co-op mode announced Feb 2026.",
+        note: "Sony FY25 Q2 earnings figure via press coverage; Sony stated it outperformed Tsushima over the same period.",
+      },
+      {
+        id: "got-legends-release",
+        label: "Ghost of Yōtei Legends release",
+        value: "Free co-op DLC released March 10, 2026 · PC version targeted Q2 2026",
+        asOfDate: "2026-03-10",
+        sourceIds: ["ps-blog-yotei-legends"],
+        sourceTier: "tier-1",
+        confidence: 92,
+        isModeled: false,
+        note: "Official PlayStation Blog announcement; sustains post-launch engagement through 2026.",
       },
     ],
     hasPublicSalesData: true,
@@ -493,9 +506,10 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
       "steamdb-ghost-of-tsushima",
       "fangamer-ghost-of-tsushima",
       "gematsu-yotei-sales",
+      "ps-blog-yotei-legends",
       "ps-licensing-program",
     ],
-    lastVerifiedAt: "2026-07-16",
+    lastVerifiedAt: "2026-08-04",
   },
   {
     rank: 4,

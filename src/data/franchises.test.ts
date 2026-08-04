@@ -5,14 +5,19 @@ import { sources } from "@/data/sources";
 import { computeOverallScore } from "@/lib/scoring";
 
 /**
- * The exact default ranking order: the original seed top-50 (relative
- * order preserved exactly) plus Saros, added at rank 30 in the July 2026
- * research update after its April 30, 2026 release.
+ * The exact default ranking order after the August 2026 research pass.
+ * Documented revisions to the original seed top-50:
+ * - Ghost of Tsushima 85.0 -> 85.9 (momentum 8.3 -> 8.8: Yotei outsold
+ *   Tsushima's launch; Legends co-op March 2026; PC port Q2 2026) - now #2.
+ * - Saros 68.0 -> 67.0 (momentum 7.6 -> 7.0: reported ~300K first two
+ *   weeks despite Metacritic 88).
+ * - High on Life added at rank 28 (High on Life 2 released Feb 13, 2026).
+ * All other seed scores and relative positions are unchanged.
  */
 const EXPECTED_ORDER: Array<[string, number]> = [
   ["Helldivers 2", 86.0],
+  ["Ghost of Tsushima", 85.9],
   ["God of War", 85.1],
-  ["Ghost of Tsushima", 85.0],
   ["Astro Bot", 83.5],
   ["Horizon", 83.2],
   ["The Last of Us", 83.2],
@@ -37,13 +42,14 @@ const EXPECTED_ORDER: Array<[string, number]> = [
   ["Kingdom Hearts", 70.3],
   ["Demon's Souls", 69.8],
   ["Silent Hill", 69.5],
+  ["High on Life", 69.4],
   ["Nioh", 68.7],
   ["Days Gone", 68.1],
-  ["Saros", 68.0],
   ["Street Fighter", 67.8],
   ["Crash Bandicoot", 67.6],
   ["Tekken", 67.5],
   ["Jak and Daxter", 67.1],
+  ["Saros", 67.0],
   ["Sly Cooper", 66.4],
   ["Ape Escape", 66.1],
   ["Returnal", 65.8],
@@ -64,8 +70,8 @@ const EXPECTED_ORDER: Array<[string, number]> = [
 ];
 
 describe("seed dataset", () => {
-  it("contains exactly 51 franchises (seed 50 + Saros)", () => {
-    expect(franchises).toHaveLength(51);
+  it("contains exactly 52 franchises (seed 50 + Saros + High on Life)", () => {
+    expect(franchises).toHaveLength(52);
   });
 
   it("matches the expected ranking order and scores exactly", () => {
@@ -73,9 +79,13 @@ describe("seed dataset", () => {
     expect(actual).toEqual(EXPECTED_ORDER);
   });
 
-  it("preserves the original seed top-50 relative order exactly", () => {
-    const seedNames = EXPECTED_ORDER.map(([name]) => name).filter((n) => n !== "Saros");
-    const actualSeedOrder = franchises.map((f) => f.name).filter((n) => n !== "Saros");
+  it("preserves the seed top-50 relative order apart from documented revisions", () => {
+    const additions = new Set(["Saros", "High on Life"]);
+    // Ghost of Tsushima's move to #2 is the single revision among seed
+    // franchises; with it and the additions factored out, order holds.
+    const revised = new Set(["Ghost of Tsushima", ...additions]);
+    const seedNames = EXPECTED_ORDER.map(([name]) => name).filter((n) => !revised.has(n));
+    const actualSeedOrder = franchises.map((f) => f.name).filter((n) => !revised.has(n));
     expect(actualSeedOrder).toEqual(seedNames);
   });
 
