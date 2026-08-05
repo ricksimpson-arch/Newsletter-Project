@@ -958,6 +958,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Marvel Characters, Inc. (Spider-Man character IP)",
+      ownerShort: "Marvel (Disney)",
       parentCompany: "The Walt Disney Company",
       licensingVia: "Disney/Marvel consumer-products licensing",
       additionalStakeholders: [
@@ -1222,6 +1223,7 @@ export const TOP10_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Kojima Productions",
+      ownerShort: "Kojima Productions",
       parentCompany: undefined,
       licensingVia: "Kojima Productions licensing/partnerships (SIE publishing relationship)",
       additionalStakeholders: ["Sony Interactive Entertainment (publishing relationship)"],

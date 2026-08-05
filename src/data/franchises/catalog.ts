@@ -224,6 +224,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Sony Interactive Entertainment (game IP); MLB & MLBPA own league/player marks",
+      ownerShort: "SIE + MLB/MLBPA",
       additionalStakeholders: [
         "Major League Baseball (league and team marks)",
         "MLB Players Association (player names and likenesses)",
@@ -301,6 +302,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Capcom merchandising plus deep Japanese-market licensee network."],
     rights: {
       rightsHolder: "Capcom Co., Ltd.",
+      ownerShort: "Capcom",
       parentCompany: undefined,
       licensingVia: "Capcom consumer-products licensing",
       competingLicensees: [
@@ -329,6 +331,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     confidence: CONFIDENCE_PRESETS.recentRelease,
     rights: {
       rightsHolder: "Shift Up Corporation",
+      ownerShort: "Shift Up",
       parentCompany: undefined,
       licensingVia: "Shift Up licensing (SIE console-publishing relationship)",
       additionalStakeholders: ["Sony Interactive Entertainment (console publishing)"],
@@ -357,6 +360,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 6,
     rights: {
       rightsHolder: "SEGA (Ryu Ga Gotoku Studio)",
+      ownerShort: "SEGA",
       parentCompany: "SEGA Sammy Holdings",
       licensingVia: "SEGA licensing",
       competingLicensees: [
@@ -389,6 +393,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Disney merchandising machine plus Square Enix programs already serve fans."],
     rights: {
       rightsHolder: "The Walt Disney Company (characters & franchise) with Square Enix (development)",
+      ownerShort: "Disney / Square Enix",
       parentCompany: "The Walt Disney Company",
       licensingVia: "Disney consumer-products licensing plus Square Enix approvals",
       additionalStakeholders: ["Square Enix (original-character and development-side approvals)"],
@@ -437,6 +442,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Horror apparel is a crowded category across licensed and generic product."],
     rights: {
       rightsHolder: "Konami Digital Entertainment",
+      ownerShort: "Konami",
       parentCompany: "Konami Group Corporation",
       licensingVia: "Konami licensing",
       competingLicensees: [
@@ -472,6 +478,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
       catalystIds: ["hol2-release-momentum", "q4-gifting"],
       rights: {
         rightsHolder: "Squanch Games, Inc. (independent studio)",
+      ownerShort: "Squanch Games",
         parentCompany: undefined,
         licensingVia: "Direct studio partnership - no formal licensing program observed",
         competingLicensees: [
@@ -527,6 +534,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 6,
     rights: {
       rightsHolder: "Koei Tecmo Games (Team Ninja)",
+      ownerShort: "Koei Tecmo",
       parentCompany: "Koei Tecmo Holdings",
       licensingVia: "Koei Tecmo licensing (SIE console-publishing history)",
       additionalStakeholders: ["Sony Interactive Entertainment (console publishing)"],
@@ -623,6 +631,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Decades of licensed apparel, arcade nostalgia goods, and collectibles worldwide."],
     rights: {
       rightsHolder: "Capcom Co., Ltd.",
+      ownerShort: "Capcom",
       parentCompany: undefined,
       licensingVia: "Capcom consumer-products licensing",
       competingLicensees: [
@@ -652,6 +661,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Mass-retail licensed product already spans apparel, plush, and toys."],
     rights: {
       rightsHolder: "Activision Publishing",
+      ownerShort: "Activision (Microsoft)",
       parentCompany: "Microsoft Gaming",
       licensingVia: "Activision/Microsoft consumer-products licensing",
       competingLicensees: [
@@ -678,6 +688,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 7,
     rights: {
       rightsHolder: "Bandai Namco Entertainment",
+      ownerShort: "Bandai Namco",
       parentCompany: "Bandai Namco Holdings",
       licensingVia: "Bandai Namco licensing",
       competingLicensees: [
@@ -797,6 +808,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     landscape: ["Mass-retail licensed plush and apparel already exist."],
     rights: {
       rightsHolder: "Activision Publishing",
+      ownerShort: "Activision (Microsoft)",
       parentCompany: "Microsoft Gaming",
       licensingVia: "Activision/Microsoft consumer-products licensing",
       competingLicensees: [
@@ -842,6 +854,7 @@ export const CATALOG_SEEDS: FranchiseSeed[] = [
     licensingComplexity: 5,
     rights: {
       rightsHolder: "thatgamecompany (originally published by SIE)",
+      ownerShort: "thatgamecompany",
       parentCompany: undefined,
       licensingVia: "thatgamecompany partnerships",
       competingLicensees: ["Indie-game merch specialists (iam8bit-style partners)"],

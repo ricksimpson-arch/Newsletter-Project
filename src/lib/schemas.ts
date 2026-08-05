@@ -163,6 +163,7 @@ export const franchiseSchema = z
     licensingNotes: z.array(z.string().min(1)).min(1),
     rightsProfile: z.object({
       rightsHolder: z.string().min(1),
+      ownerShort: z.string().min(1).optional(),
       parentCompany: z.string().optional(),
       licensingVia: z.string().min(1),
       additionalStakeholders: z.array(z.string().min(1)),

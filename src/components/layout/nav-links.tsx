@@ -9,6 +9,7 @@ import {
   GitCompareArrowsIcon,
   LayoutDashboardIcon,
   ListOrderedIcon,
+  MessagesSquareIcon,
   ScaleIcon,
   ScrollTextIcon,
 } from "lucide-react";
@@ -21,6 +22,7 @@ export const NAV_ITEMS = [
   { href: "/compare", label: "Compare", icon: GitCompareArrowsIcon },
   { href: "/forecast", label: "Forecast Lab", icon: FlaskConicalIcon },
   { href: "/benchmarks", label: "Benchmarks", icon: ScaleIcon },
+  { href: "/board", label: "Dev Board", icon: MessagesSquareIcon },
   { href: "/methodology", label: "Methodology", icon: ScrollTextIcon },
   { href: "/data-room", label: "Data Room", icon: DatabaseIcon },
 ] as const;

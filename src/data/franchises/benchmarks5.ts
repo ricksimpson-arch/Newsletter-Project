@@ -45,6 +45,7 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Capcom Co., Ltd.",
+      ownerShort: "Capcom",
       parentCompany: undefined,
       licensingVia: "Capcom consumer-products licensing",
       competingLicensees: [
@@ -161,6 +162,7 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Square Enix Holdings",
+      ownerShort: "Square Enix",
       parentCompany: undefined,
       licensingVia: "Square Enix merchandise licensing",
       competingLicensees: [
@@ -277,6 +279,7 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "ATLUS (SEGA)",
+      ownerShort: "ATLUS / SEGA",
       parentCompany: "SEGA Sammy Holdings",
       licensingVia: "ATLUS/SEGA licensing",
       competingLicensees: [
@@ -381,6 +384,7 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "FromSoftware / Bandai Namco Entertainment (co-held)",
+      ownerShort: "FromSoft / Bandai Namco",
       parentCompany: "Kadokawa (FromSoftware) · Bandai Namco Holdings",
       licensingVia: "Bandai Namco licensing with FromSoftware creative approval",
       competingLicensees: [
@@ -486,6 +490,7 @@ export const BENCHMARK_SEEDS: FranchiseSeed[] = [
     ],
     rights: {
       rightsHolder: "Konami Digital Entertainment",
+      ownerShort: "Konami",
       parentCompany: "Konami Group Corporation",
       licensingVia: "Konami licensing",
       competingLicensees: [

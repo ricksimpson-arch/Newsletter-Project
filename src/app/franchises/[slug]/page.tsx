@@ -82,7 +82,7 @@ export default async function FranchisePage({
               <span className="tnum rounded-md bg-secondary px-2 py-0.5 text-sm font-bold">
                 #{franchise.rank}
               </span>
-              <OwnershipBadge type={franchise.ownershipType} />
+              <OwnershipBadge type={franchise.ownershipType} ownerLabel={franchise.rightsProfile.ownerShort} />
               <RecommendationBadge level={franchise.recommendation} />
               {franchise.isBenchmark && (
                 <span className="rounded-md border border-dashed px-2 py-0.5 text-xs text-muted-foreground">

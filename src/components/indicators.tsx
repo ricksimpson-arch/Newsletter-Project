@@ -174,7 +174,16 @@ export const OWNERSHIP_LABELS: Record<OwnershipType, string> = {
   legacy: "Sony legacy",
 };
 
-export function OwnershipBadge({ type, className }: { type: OwnershipType; className?: string }) {
+export function OwnershipBadge({
+  type,
+  ownerLabel,
+  className,
+}: {
+  type: OwnershipType;
+  /** Actual IP owner name (e.g. "Capcom") — shown instead of the generic bucket when provided. */
+  ownerLabel?: string;
+  className?: string;
+}) {
   return (
     <span
       className={cn(
@@ -184,8 +193,9 @@ export function OwnershipBadge({ type, className }: { type: OwnershipType; class
           : "border-border bg-secondary text-secondary-foreground",
         className
       )}
+      title={ownerLabel ? `${OWNERSHIP_LABELS[type]} — IP owner: ${ownerLabel}` : undefined}
     >
-      {OWNERSHIP_LABELS[type]}
+      {ownerLabel ?? OWNERSHIP_LABELS[type]}
     </span>
   );
 }

@@ -128,7 +128,7 @@ export default function BenchmarksPage() {
                     </Link>
                   </TableCell>
                   <TableCell>
-                    <OwnershipBadge type={f.ownershipType} />
+                    <OwnershipBadge type={f.ownershipType} ownerLabel={f.rightsProfile.ownerShort} />
                   </TableCell>
                   <TableCell className="text-right tnum">{f.overallScore.toFixed(1)}</TableCell>
                   <TableCell className="text-right tnum">{f.rawDemandScore.toFixed(1)}</TableCell>

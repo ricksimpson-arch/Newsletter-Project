@@ -430,7 +430,7 @@ export function RankingsView({ franchises }: { franchises: Franchise[] }) {
                       </Link>
                     </TableCell>
                     <TableCell>
-                      <OwnershipBadge type={f.ownershipType} />
+                      <OwnershipBadge type={f.ownershipType} ownerLabel={f.rightsProfile.ownerShort} />
                     </TableCell>
                     {NUMERIC_COLUMNS.map((col) => (
                       <TableCell key={col.key} className="text-right tnum">
@@ -487,7 +487,7 @@ export function RankingsView({ franchises }: { franchises: Franchise[] }) {
                 <div className="mt-2 flex flex-wrap items-center gap-2">
                   <span className="tnum text-xl font-bold">{f.overallScore.toFixed(1)}</span>
                   <RecommendationBadge level={f.recommendation} />
-                  <OwnershipBadge type={f.ownershipType} />
+                  <OwnershipBadge type={f.ownershipType} ownerLabel={f.rightsProfile.ownerShort} />
                 </div>
                 <dl className="mt-2 grid grid-cols-2 gap-x-4 gap-y-1 text-xs">
                   <div className="flex justify-between"><dt className="text-muted-foreground">Raw demand</dt><dd className="tnum">{f.rawDemandScore.toFixed(1)}</dd></div>

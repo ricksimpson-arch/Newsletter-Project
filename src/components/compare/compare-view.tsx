@@ -195,7 +195,7 @@ export function CompareView({ franchises }: { franchises: Franchise[] }) {
                     <TableCell className="font-medium">Ownership</TableCell>
                     {selection.map((f) => (
                       <TableCell key={f.slug}>
-                        <OwnershipBadge type={f.ownershipType} />
+                        <OwnershipBadge type={f.ownershipType} ownerLabel={f.rightsProfile.ownerShort} />
                       </TableCell>
                     ))}
                   </TableRow>

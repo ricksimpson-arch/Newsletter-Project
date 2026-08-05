@@ -138,6 +138,8 @@ export interface MerchandiseStrategy {
 export interface RightsProfile {
   /** Legal owner of the franchise IP. */
   rightsHolder: string;
+  /** Short owner name for badges/tables (e.g. "Capcom", "Disney/Marvel"). */
+  ownerShort?: string;
   parentCompany?: string;
   /** The practical route to a merchandise license. */
   licensingVia: string;

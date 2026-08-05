@@ -66,6 +66,7 @@ npm run e2e        # Playwright E2E (see Testing below)
 | `/benchmarks` | Top Sony opportunities vs the 5 non-Sony benchmarks |
 | `/methodology` | The full model, written for executives and auditable by analysts |
 | `/data-room` | Internal research management: dataset health, stale-data alerts, validation report, exports |
+| `/board` | Developer Board: game developers post listings requesting a rating; intake files a prefilled GitHub issue (static-site friendly), curated listings render from `src/data/boardListings.ts` |
 
 ## Data model
 
@@ -224,6 +225,20 @@ abstract placeholder — no copyrighted artwork ships with the app.
 - **Data Room** — full dataset JSON, franchises CSV, and a source-audit CSV.
   The Data Room JSON "import" is validation-only: it reports schema results
   and never silently overwrites verified seed data.
+
+## Developer Board
+
+`/board` is the intake pipeline for indie studios: a developer fills in the
+listing form (game, studio, pitch, merch angle, contact) and "Submit via
+GitHub" opens a prefilled issue labeled `dev-board` on this repository —
+no backend needed on a static host, and submissions stay attributable and
+triageable. A copy-as-text fallback exists for developers without GitHub
+accounts. After the research team reviews a submission, the listing is added
+to `src/data/boardListings.ts` via PR (statuses: new / under-review / rated),
+and rated games enter the rankings with a full dossier. Never add a listing
+without a real submission behind it. The page also displays the research
+roadmap: real IP-owner names in the UI (shipped), indie-creator scouting
+(ongoing), and licensee mapping for partnerships/competition (ongoing).
 
 ## Limitations
 
